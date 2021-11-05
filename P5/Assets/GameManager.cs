@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -18,11 +17,13 @@ public class GameManager : MonoBehaviour
         EmptyNear,
         InterestingObjectsNear,
         MirageNear,
-        CoinsNear
+        CoinsNear,
+        
+        End
     }
 
     [Header("Standard Settings")]
-    [SerializeField] float timeBetweenSwitchInSeconds = 8;
+    [SerializeField] float timeBetweenSwitchInSeconds = 20;
 
     [Header("Fog Settings")]
     [SerializeField] float nearFog = 0.85f;
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
     bool m_IsNearFog;
     float m_TextLerpDistance;
     List<GameObject> m_ScenarioObjects = new List<GameObject>();
+    bool m_IsDone;
+    
 
     void Start()
     {
@@ -61,6 +64,11 @@ public class GameManager : MonoBehaviour
         var camTransform = m_Cam.transform;
         var textScreenTransform = textScreen.transform;
         
+        // Set camera text placement
+        textScreenTransform.position = Vector3.Lerp(textScreenTransform.position, GetTextAwayFromCameraPosition(camTransform, m_TextLerpDistance), Time.deltaTime * textSpeed);
+        textScreen.transform.rotation = Quaternion.Slerp(textScreenTransform.rotation,camTransform.rotation,Time.deltaTime * textSpeed);
+        if(m_IsDone) return;
+        
         // Count timer downwards
         if (m_TimeBetweenSwitchInSecondsLeft > 0)
             m_TimeBetweenSwitchInSecondsLeft -= Time.deltaTime;
@@ -68,12 +76,12 @@ public class GameManager : MonoBehaviour
         {
             m_TimeBetweenSwitchInSecondsLeft = timeBetweenSwitchInSeconds;
             textScreen.text = "";
-            SwitchScenario();
+            StartCoroutine(SwitchScenario());
         }
         
         // Set fog
         RenderSettings.fogDensity = math.lerp(RenderSettings.fogDensity, m_IsNearFog ? nearFog:farFog, Time.deltaTime*5);
-
+        
         // Show count down
         if (m_TimeBetweenSwitchInSecondsLeft < 6)
         {
@@ -83,14 +91,8 @@ public class GameManager : MonoBehaviour
             
             // Move text based on fraction time
             var timeFraction = m_TimeBetweenSwitchInSecondsLeft-timeLeft;
-            //if (timeFraction < m_TextLerpDistance) 
-            //    textScreenTransform.position = GetTextAwayFromCameraPosition(camTransform, timeFraction);
             m_TextLerpDistance = math.smoothstep(0.1f, 1, timeFraction);
         }
-        
-        // Set camera text placement
-        textScreenTransform.position = Vector3.Lerp(textScreenTransform.position, GetTextAwayFromCameraPosition(camTransform, m_TextLerpDistance), Time.deltaTime * textSpeed);
-        textScreen.transform.rotation = Quaternion.Slerp(textScreenTransform.rotation,camTransform.rotation,Time.deltaTime * textSpeed);
 
     }
 
@@ -104,10 +106,12 @@ public class GameManager : MonoBehaviour
         m_ScenarioObjects.Clear();
     }
     
-    void SwitchScenario()
+    IEnumerator SwitchScenario()
     {
+        m_HeatMapper.UpdateHeatMaps(m_NextScenario.ToString());
+        yield return new WaitForSeconds(1f);
+        
         DestroyCurrentScenario();
-        m_HeatMapper.UpdateHeatMaps(nameof(m_NextScenario));
         switch (m_NextScenario)
         {
             case Scenarios.InterestingObjectsFar:
@@ -137,6 +141,13 @@ public class GameManager : MonoBehaviour
                 break;
             case Scenarios.CoinsNear:
                 DoCoins();
+                m_NextScenario = Scenarios.End;
+                break;
+            case Scenarios.End:
+                m_TextLerpDistance = 0;
+                textScreen.text = "Thanks for testing <3";
+                m_IsDone = true;
+                Application.Quit();
                 break;
         }
     }
