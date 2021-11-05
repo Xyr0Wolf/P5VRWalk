@@ -1,0 +1,942 @@
+fileFormatVersion: 2
+guid: aaa23f4bf45384348a9ab39a9f2881fa
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_001Mat
+    second: {fileID: 2100000, guid: 1437e5229b4af6643ace887940b322ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_002Mat
+    second: {fileID: 2100000, guid: bca1f7497207dc04abf570d1b8363344, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_003Mat
+    second: {fileID: 2100000, guid: b577429cb3d54454286e1ce954626cbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_004Mat
+    second: {fileID: 2100000, guid: 60c031c7ef08d034c9b3278cf1874155, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_005Mat
+    second: {fileID: 2100000, guid: 854bd94976aad2849b9e40a29caee461, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_006Mat
+    second: {fileID: 2100000, guid: 3e129160d1456e84898fc89ca1cc2ae3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_007Mat
+    second: {fileID: 2100000, guid: a46ac89edc2275d4a8bd8f16ba927541, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_008Mat
+    second: {fileID: 2100000, guid: 4109a7335fdae9f4984b75de785151fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_009Mat
+    second: {fileID: 2100000, guid: 177ee84060286a843b9ff5726ea0dd96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_010Mat
+    second: {fileID: 2100000, guid: 34d77b9ae320acb44bd008c7ccf81542, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_011Mat
+    second: {fileID: 2100000, guid: c0a830ac78afe8f46a3015490b9f6607, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_012Mat
+    second: {fileID: 2100000, guid: 9ea8a389b8e5b7549953b08c07d12812, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_013Mat
+    second: {fileID: 2100000, guid: 7f77c8f67b04523428a0ba0b572a9a0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Group_014Mat
+    second: {fileID: 2100000, guid: 1d6a3adc20629cc49b5ffe23ec46461a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Layer0_001Mat
+    second: {fileID: 2100000, guid: d64f96131cc22a7419a06ee419d050d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_001Mat
+    second: {fileID: 2100000, guid: 637f7f62ab920964f87d3e4e538644c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_002Mat
+    second: {fileID: 2100000, guid: d547dfab9cc38aa4f9e5105ee2e5bb90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_003Mat
+    second: {fileID: 2100000, guid: 8d1f4d09eb08fa24ca6fd5fe53a32a3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_004Mat
+    second: {fileID: 2100000, guid: 2d5cc21e12fb57148a707069db29bedb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_005Mat
+    second: {fileID: 2100000, guid: 7b2459f94e3181846a99ee0b4b21e3bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_006Mat
+    second: {fileID: 2100000, guid: 11bb9c191388606429d2f4db109f91f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_007Mat
+    second: {fileID: 2100000, guid: a500e0521364f78428bfbc874c9caedb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_008Mat
+    second: {fileID: 2100000, guid: f1e0d1730fd634c4981ea9ff2d80c80f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_009Mat
+    second: {fileID: 2100000, guid: c0d44cf1904fcec409ed67cc4bffbf75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_010Mat
+    second: {fileID: 2100000, guid: 196ada78673a79241a653514b8f237ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_011Mat
+    second: {fileID: 2100000, guid: 457445267cbd5e94ca34dc1eeb6a3967, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_012Mat
+    second: {fileID: 2100000, guid: bef1966d354d77b44a7bae4251e197e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_013Mat
+    second: {fileID: 2100000, guid: 762430e2949b7d24385d581965a7c127, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_014Mat
+    second: {fileID: 2100000, guid: 1499f3482ff7fbe4bb708f18e1fe6744, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_015Mat
+    second: {fileID: 2100000, guid: 12800702aefeed846a8695cf19e5587f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_016Mat
+    second: {fileID: 2100000, guid: dbe046bee80ea1a41bb171590bc8fe0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_017Mat
+    second: {fileID: 2100000, guid: 60829f9e89343bb498d62af493ad60b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_018Mat
+    second: {fileID: 2100000, guid: 84911c5d081eb2d4c8c0670373731eca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_019Mat
+    second: {fileID: 2100000, guid: 43e0e6f5c3bd3934da3c5c3c5560b1e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_020Mat
+    second: {fileID: 2100000, guid: 2d5fdea0d560a02439c6d0a62f4f9be2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_021Mat
+    second: {fileID: 2100000, guid: 995fbda174c8a78489b744d1ffc1100d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_022Mat
+    second: {fileID: 2100000, guid: 85dcadf8a40e1444e85be9dbd4cfce19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_023Mat
+    second: {fileID: 2100000, guid: 130c3e3670d7f544f835853762ce8303, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_024Mat
+    second: {fileID: 2100000, guid: 7fa58e757bab6a543b39b9797dcf1afb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_025Mat
+    second: {fileID: 2100000, guid: 052584cef5d9ffa4d868214b156672ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_026Mat
+    second: {fileID: 2100000, guid: 36f2cf35e4c1cf24aa3feca223e5f925, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_027Mat
+    second: {fileID: 2100000, guid: b31ee51b4198fbc4bb3a2ee415f5be42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bushroot2d_028Mat
+    second: {fileID: 2100000, guid: 02ccd8f758fb25145a98252f3942fee3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_003Mat
+    second: {fileID: 2100000, guid: dbfd949069003a84387eb87f3a1769fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_004Mat
+    second: {fileID: 2100000, guid: d38ba886e510fb645b04a2680a20eb84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_005Mat
+    second: {fileID: 2100000, guid: 19ee483dda49c5c47b23fb2449f9d40c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_006Mat
+    second: {fileID: 2100000, guid: ee38756f19bb2f042a2d5caff47520db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_007Mat
+    second: {fileID: 2100000, guid: 376542de0e81ed443a48840ddd4f02a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_008Mat
+    second: {fileID: 2100000, guid: 47fdb9c5d2c3ffb4c965c6282fddf159, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_009Mat
+    second: {fileID: 2100000, guid: 2942523df287c034688f7939f10fbcd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_010Mat
+    second: {fileID: 2100000, guid: ef861a5773bee834692dccc6752dee28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_011Mat
+    second: {fileID: 2100000, guid: cee738550d7f61f42891e599e744713c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_012Mat
+    second: {fileID: 2100000, guid: 87a36cf0c995a454f83ce8a49acb2a55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_013Mat
+    second: {fileID: 2100000, guid: 025ad6e9c21b1774ebbaf0db3d413271, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_014Mat
+    second: {fileID: 2100000, guid: 3cf9009e9522d58458021e5bcf83a255, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_015Mat
+    second: {fileID: 2100000, guid: 0e104edaab8bd0849a4c9930412592bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_016Mat
+    second: {fileID: 2100000, guid: 5698149c2c0bd6a4fb2516bad3b3dc65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_017Mat
+    second: {fileID: 2100000, guid: 9f4e5c4ca6aa1c7498465ba3c9de17de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_018Mat
+    second: {fileID: 2100000, guid: 037ff57a97cbd894e8a9a74b3aebf738, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_019Mat
+    second: {fileID: 2100000, guid: 162ee442c48136f4c882767aff886def, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_020Mat
+    second: {fileID: 2100000, guid: 55ab1f3109d9a4542b6f3cf473504e28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_021Mat
+    second: {fileID: 2100000, guid: d8bad5dbbf100954db89fa9cd167eae0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_022Mat
+    second: {fileID: 2100000, guid: f86ad1cb53c3f534f9b42bc0fdbe88b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_023Mat
+    second: {fileID: 2100000, guid: 960bbd61601d0384fbe2f680a2af04d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_024Mat
+    second: {fileID: 2100000, guid: 6b0e0a67f404f4247ae9c57c60dd2364, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_025Mat
+    second: {fileID: 2100000, guid: 02b8ff98faeb1f5418286d4199742fae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_026Mat
+    second: {fileID: 2100000, guid: 5159cabcb50da6a41b4b92b762354a6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_027Mat
+    second: {fileID: 2100000, guid: cae8892f29ce3104092a9feba12e0dff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_028Mat
+    second: {fileID: 2100000, guid: 6a4429dbb4bd7b94ba7f7fe60f3348b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_029Mat
+    second: {fileID: 2100000, guid: eb88ff3268ca05143ac311aa10531a86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_030Mat
+    second: {fileID: 2100000, guid: 6acbeb1c6a04a8c46823fe496d666b0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_031Mat
+    second: {fileID: 2100000, guid: b2b49e93a88a10f4aa322b0ff6e55b79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_032Mat
+    second: {fileID: 2100000, guid: c7df52d765cb75e46a241bcf96f9f05b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_033Mat
+    second: {fileID: 2100000, guid: 0de5f4f122b72b04bbd2052936181b0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_034Mat
+    second: {fileID: 2100000, guid: 081df17729163c148b78c54881c70089, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_035Mat
+    second: {fileID: 2100000, guid: 75bcbab7cc74d5c47975cd64f6726ad7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_036Mat
+    second: {fileID: 2100000, guid: e5c69753019bdab4cbefca43a01ee6d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_037Mat
+    second: {fileID: 2100000, guid: d5c131ed484ca6449b19b49eff16b6a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_038Mat
+    second: {fileID: 2100000, guid: 02f36ccf1d6082742b413fd3b1646e16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_039Mat
+    second: {fileID: 2100000, guid: 6f28a751075514243a2fe104bb687369, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_040Mat
+    second: {fileID: 2100000, guid: c42f9fd7a2ec37c4ea447948fcdae733, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_041Mat
+    second: {fileID: 2100000, guid: 029050fc37e4f354e97a9d557dd77a69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_042Mat
+    second: {fileID: 2100000, guid: d77d0bd622e66e845bd01034af748c7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_043Mat
+    second: {fileID: 2100000, guid: 820b12794a156614c9e826df4652b30c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_044Mat
+    second: {fileID: 2100000, guid: 666cb99419c4aba43b7b9385976f9485, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_045Mat
+    second: {fileID: 2100000, guid: 76d997cb59a3e50478e4eebae5d3a7ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_046Mat
+    second: {fileID: 2100000, guid: 1c70853c976fea7419cf0b4afcd35fd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_047Mat
+    second: {fileID: 2100000, guid: 89ae7f3922d9cb24b8c9bb198e5103c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_048Mat
+    second: {fileID: 2100000, guid: bd3857e6d467694459b819d6dc5346ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_049Mat
+    second: {fileID: 2100000, guid: af0eb26f20c08b341bb3a8fb3dd28081, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_050Mat
+    second: {fileID: 2100000, guid: c8ddaecc103820b489e450bc42dd8ee7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_051Mat
+    second: {fileID: 2100000, guid: 56ffa73a5f2dfd242bd2d8336949b9d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_052Mat
+    second: {fileID: 2100000, guid: 9c8133c4eeb25744496b54644791425b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_053Mat
+    second: {fileID: 2100000, guid: 377e0635fe376264798877e49d405c30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_054Mat
+    second: {fileID: 2100000, guid: 4e937e949ad7cc44ba0d8c9c9c663763, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_055Mat
+    second: {fileID: 2100000, guid: 90b06e147e4187c48ad64645c8b60707, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_056Mat
+    second: {fileID: 2100000, guid: 6261d9f21a5635b459ec6365e3070b0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_057Mat
+    second: {fileID: 2100000, guid: 9e3bfb3ca423ae34eab273e7720dc409, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_058Mat
+    second: {fileID: 2100000, guid: 00e723cab1395994081a96c1d99c33a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_059Mat
+    second: {fileID: 2100000, guid: a3dd7d2986e477c47bc96eb6268f4bdc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_060Mat
+    second: {fileID: 2100000, guid: 01527f3c020bb894b98d17345deb963d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_061Mat
+    second: {fileID: 2100000, guid: 5407cf1c300fde040bca3da2d6e9f1be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_062Mat
+    second: {fileID: 2100000, guid: 04f4b74906330e5478ae232eac14e76d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_063Mat
+    second: {fileID: 2100000, guid: d8d5f18b1bb15b34484a19012b7fc58d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_064Mat
+    second: {fileID: 2100000, guid: d4215cc94124a8c41b3a3caf5fcbaaed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_065Mat
+    second: {fileID: 2100000, guid: c52e280b83cc19542839ba76c150d940, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_066Mat
+    second: {fileID: 2100000, guid: 7c57fdc7218021344af8594a771fb605, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_067Mat
+    second: {fileID: 2100000, guid: 7d6708c7f942e2544abc9f27a2ed7d03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_068Mat
+    second: {fileID: 2100000, guid: b7cf6e256b41af949bda7a94068a59f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_069Mat
+    second: {fileID: 2100000, guid: 36dc87461d0d1d4478949832e8b58698, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_070Mat
+    second: {fileID: 2100000, guid: 918c13ade2f99e4499786a2bb9af3b4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_071Mat
+    second: {fileID: 2100000, guid: f47f72e04170ea642a8f049ba5ff3268, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_072Mat
+    second: {fileID: 2100000, guid: 7d1516d719e5d2346ad3de647eef820e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_073Mat
+    second: {fileID: 2100000, guid: ee0050b4abf36ea4b9dfdc7640479004, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_074Mat
+    second: {fileID: 2100000, guid: 3341267b7bb09884c96dce95569d4e09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_075Mat
+    second: {fileID: 2100000, guid: 9c7bfea7fdf13d84a968a3d474c864df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_076Mat
+    second: {fileID: 2100000, guid: 177e2c03b7f5a4849800508723cb0020, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_077Mat
+    second: {fileID: 2100000, guid: 3b8b4f87eea2ac44e8ec7184cb62723e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_078Mat
+    second: {fileID: 2100000, guid: 0107e9c4019145142b178e2791216c01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_079Mat
+    second: {fileID: 2100000, guid: 6239bbd7139fe154881cb44d6ed0a2a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_080Mat
+    second: {fileID: 2100000, guid: 8467f79d2091ccd479c265c0d554d3c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_081Mat
+    second: {fileID: 2100000, guid: b1fcb7d5dfadd6a4d8c84b8012ff0544, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_082Mat
+    second: {fileID: 2100000, guid: d8cc06c0dda19854b91df9ff91c6eb66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_083Mat
+    second: {fileID: 2100000, guid: b85c3fc6f8145eb4b9eec0460dafa8e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_084Mat
+    second: {fileID: 2100000, guid: 799d7e662f3d48d42ac9893c4c5b4e89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_085Mat
+    second: {fileID: 2100000, guid: 5d6e7dc33dd791849aa54c3ff21ade53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_086Mat
+    second: {fileID: 2100000, guid: 7ec89de1f8a5cad468b08c78a6315489, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_087Mat
+    second: {fileID: 2100000, guid: ac0bfca0f57bb1247bf7fd96d9704d8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_088Mat
+    second: {fileID: 2100000, guid: fd93fb58469757544a13bfb9a92cf956, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_089Mat
+    second: {fileID: 2100000, guid: a5ab84a1bbfbd8e4381d2c17a006b5ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_090Mat
+    second: {fileID: 2100000, guid: c6c8e6483e7d44043a2433d1c042ea69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_091Mat
+    second: {fileID: 2100000, guid: 111d582edb1e6eb4882f5965d6b46f24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_092Mat
+    second: {fileID: 2100000, guid: c32b81c33b69ab645912b19da5f04779, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_093Mat
+    second: {fileID: 2100000, guid: 9411970a9e2a9d94ab5d5c33fc151ca1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_094Mat
+    second: {fileID: 2100000, guid: 084d208d868f9364096319fcd30395ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_095Mat
+    second: {fileID: 2100000, guid: 864b1e49b39806840a1984ab95e6a5da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_096Mat
+    second: {fileID: 2100000, guid: 8783899eae773f0428b8e6fcbbdc8155, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_097Mat
+    second: {fileID: 2100000, guid: e53960f9dfefcb445b2c69c26d143524, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_098Mat
+    second: {fileID: 2100000, guid: 03dd9fdb43bf35a468a6a018f474a242, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_099Mat
+    second: {fileID: 2100000, guid: 7d9cde969ac1eda49aca8bedaf16efc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_100Mat
+    second: {fileID: 2100000, guid: a536ef71055c9a64fae0996a7ff9eeb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_101Mat
+    second: {fileID: 2100000, guid: 93a5a36d80d161b40b9b8d95c27a7b8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_102Mat
+    second: {fileID: 2100000, guid: 0a7c95d68e21b21429cf5893b3f68209, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_103Mat
+    second: {fileID: 2100000, guid: d7825e2fc3aa53f48b7704f1445901ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_104Mat
+    second: {fileID: 2100000, guid: 8677f762c89775c4fad9468a96ab3da6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_105Mat
+    second: {fileID: 2100000, guid: ac69862ee99ef10499d940e736c4ea02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_106Mat
+    second: {fileID: 2100000, guid: d49e8e482d72a8643916c7bc9050c015, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_107Mat
+    second: {fileID: 2100000, guid: 26585490ae859ae4d83508fa332c6c8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_108Mat
+    second: {fileID: 2100000, guid: a85eedcf1e7d60b4eb4929b57da3898b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_109Mat
+    second: {fileID: 2100000, guid: 44cabe9fc6e15ad4e9d01427774fe0c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_110Mat
+    second: {fileID: 2100000, guid: 72582db95b39fd7469de67ba86ddd9c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_111Mat
+    second: {fileID: 2100000, guid: 71682d5b8f2771e40b7c9b3ee1944475, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_112Mat
+    second: {fileID: 2100000, guid: ecd9b1701c96d0c4e9292e6e84057d53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_113Mat
+    second: {fileID: 2100000, guid: 3f9414f9ceb1c7041a1391b550e09923, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_114Mat
+    second: {fileID: 2100000, guid: 7511b708db5c65941a4a9a72ab407cbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_115Mat
+    second: {fileID: 2100000, guid: 07ca2dd19e858fc4ea285206a123b8ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_116Mat
+    second: {fileID: 2100000, guid: 03ccfe0013968cb45bdd40bcd598a2c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_117Mat
+    second: {fileID: 2100000, guid: 78642790d1f3eaf49832ff2b94f50c48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_118Mat
+    second: {fileID: 2100000, guid: e2621933f63a3f848af49e8e3557e4ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_119Mat
+    second: {fileID: 2100000, guid: 4ecb955b500071a4bbc03590637a5c99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_120Mat
+    second: {fileID: 2100000, guid: 58f2574b9dd02a844b5edcfdcfbc92fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_121Mat
+    second: {fileID: 2100000, guid: ce464de889954f940bfc51e9dd9a83fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_leaves_122Mat
+    second: {fileID: 2100000, guid: 12957eb54ed9e8944a9bdd66b7e5745e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_wood_001Mat
+    second: {fileID: 2100000, guid: 26fc247c46ad4e04dbc727b1e92ca607, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_wood_002Mat
+    second: {fileID: 2100000, guid: 4619a24b1fce48f46b97a9cccc6f584d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_wood_003Mat
+    second: {fileID: 2100000, guid: a602c09b7ea8ffc48ae70a6983c13ab7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_wood_004Mat
+    second: {fileID: 2100000, guid: 7834e1144b6926746aa1fa25ab1b4eb5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palm_wood_005Mat
+    second: {fileID: 2100000, guid: bb9f5933fa6905642bac0d82591d0ce4, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

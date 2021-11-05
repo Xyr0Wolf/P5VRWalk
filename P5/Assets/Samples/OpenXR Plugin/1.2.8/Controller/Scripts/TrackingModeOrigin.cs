@@ -1,97 +1,81 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-using UnityEngine.XR;
 
 namespace UnityEngine.XR.OpenXR.Samples.ControllerSample
 {
     public class TrackingModeOrigin : MonoBehaviour
     {
+        [FormerlySerializedAs("m_RecenteredImage")]
         [SerializeField]
-        Image m_RecenteredImage = null;
+        Image recenteredImage;
 
+        [FormerlySerializedAs("m_RecenteredOffColor")]
         [SerializeField]
-        Color m_RecenteredOffColor = Color.red;
+        Color recenteredOffColor = Color.red;
 
+        [FormerlySerializedAs("m_RecenteredColor")]
         [SerializeField]
-        Color m_RecenteredColor = Color.green;
+        Color recenteredColor = Color.green;
 
+        [FormerlySerializedAs("m_RecenteredColorResetTime")]
         [SerializeField]
-        float m_RecenteredColorResetTime = 1.0f;
+        float recenteredColorResetTime = 1.0f;
 
-        float m_LastRecenteredTime = 0.0f;
+        float m_LastRecenteredTime;
 
         [SerializeField]
         TrackingOriginModeFlags m_CurrentTrackingOriginMode;
-        public TrackingOriginModeFlags currentTrackingOriginMode { get { return m_CurrentTrackingOriginMode; } }
 
         [SerializeField]
-        Text m_CurrentTrackingOriginModeDisplay = null;
+        Text m_CurrentTrackingOriginModeDisplay;
 
-        [SerializeField]
-        TrackingOriginModeFlags m_DesiredTrackingOriginMode;
-        public TrackingOriginModeFlags desiredTrackingOriginMode { get { return m_DesiredTrackingOriginMode; } set { m_DesiredTrackingOriginMode = value; } }
-
-        [SerializeField]
-        TrackingOriginModeFlags m_SupportedTrackingOriginModes;
-        public TrackingOriginModeFlags supportedTrackingOriginModes { get { return m_SupportedTrackingOriginModes; } }
+        [FormerlySerializedAs("m_DesiredTrackingOriginMode")]
+        [SerializeField] TrackingOriginModeFlags desiredTrackingOriginMode;
 
         static List<XRInputSubsystem> s_InputSubsystems = new List<XRInputSubsystem>();
 
-        private void OnEnable()
+        void OnEnable()
         {
             SubsystemManager.GetInstances(s_InputSubsystems);
-            for (int i = 0; i < s_InputSubsystems.Count; i++)
-            {
-                s_InputSubsystems[i].trackingOriginUpdated += TrackingOriginUpdated;
-            }
+            foreach (var t in s_InputSubsystems) 
+                t.trackingOriginUpdated += TrackingOriginUpdated;
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             SubsystemManager.GetInstances(s_InputSubsystems);
-            for (int i = 0; i < s_InputSubsystems.Count; i++)
-            {
-                s_InputSubsystems[i].trackingOriginUpdated -= TrackingOriginUpdated;
-            }
+            foreach (var t in s_InputSubsystems) 
+                t.trackingOriginUpdated -= TrackingOriginUpdated;
         }
 
-        public void OnDesiredSelectionChanged(int newValue)
-        {
-            desiredTrackingOriginMode  = (TrackingOriginModeFlags)(newValue == 0 ? 0 : (1 << (newValue - 1)));
-        }
+        public void OnDesiredSelectionChanged(int newValue) => desiredTrackingOriginMode = (TrackingOriginModeFlags) (newValue == 0 ? 0 : 1 << (newValue - 1));
 
-        private void TrackingOriginUpdated(XRInputSubsystem obj)
-        {
-            m_LastRecenteredTime = Time.time;
-        }
+        void TrackingOriginUpdated(XRInputSubsystem obj) => m_LastRecenteredTime = Time.time;
 
         void Update()
         {
             XRInputSubsystem subsystem = null;
 
             SubsystemManager.GetInstances(s_InputSubsystems);
-            if(s_InputSubsystems.Count > 0)
-            {
+            if (s_InputSubsystems.Count > 0) 
                 subsystem = s_InputSubsystems[0];
-            }
 
-            m_SupportedTrackingOriginModes = subsystem?.GetSupportedTrackingOriginModes() ?? TrackingOriginModeFlags.Unknown;
+            if (m_CurrentTrackingOriginMode != desiredTrackingOriginMode & desiredTrackingOriginMode != TrackingOriginModeFlags.Unknown) 
+                subsystem?.TrySetTrackingOriginMode(desiredTrackingOriginMode);
 
-            if(m_CurrentTrackingOriginMode != m_DesiredTrackingOriginMode & m_DesiredTrackingOriginMode != TrackingOriginModeFlags.Unknown)
-            {
-                subsystem?.TrySetTrackingOriginMode(m_DesiredTrackingOriginMode);
-            }
             m_CurrentTrackingOriginMode = subsystem?.GetTrackingOriginMode() ?? TrackingOriginModeFlags.Unknown;
 
             if (m_CurrentTrackingOriginModeDisplay != null)
                 m_CurrentTrackingOriginModeDisplay.text = m_CurrentTrackingOriginMode.ToString();
 
-            if(m_RecenteredImage != null)
+            if (recenteredImage != null)
             {
-                float lerp = (Time.time - m_LastRecenteredTime) / m_RecenteredColorResetTime;
+                var lerp = (Time.time - m_LastRecenteredTime) / recenteredColorResetTime;
                 lerp = Mathf.Clamp(lerp, 0.0f, 1.0f);
-                m_RecenteredImage.color = Color.Lerp(m_RecenteredColor, m_RecenteredOffColor, lerp);
+                recenteredImage.color = Color.Lerp(recenteredColor, recenteredOffColor, lerp);
             }
         }
     }

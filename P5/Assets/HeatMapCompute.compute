@@ -1,0 +1,31 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel cs_main
+
+RWTexture2D<float4> result;
+StructuredBuffer<float2> places_been;
+int places_been_count;
+float bell_gain;
+float end_gain;
+
+float4 hue_to_rgb(const in float h)
+{
+    float r = abs(h * 6 - 3) - 1;
+    float g = 2 - abs(h * 6 - 2);
+    float b = 2 - abs(h * 6 - 4);
+    return saturate(float4(r,g,b,1));
+}
+
+[numthreads(32,32,1)]
+void cs_main (uint3 id : SV_DispatchThreadID)
+{
+    float accumulated_amount = 0;
+    for (int i = 0; i < places_been_count; i++)
+    {
+        accumulated_amount += distance(id.xy/2048.f, (places_been[i]+float2(5,5))/10.f) * bell_gain;
+    }
+
+    accumulated_amount /= places_been_count;
+    accumulated_amount *= end_gain;
+    
+    result[id.xy] = hue_to_rgb(accumulated_amount);
+}

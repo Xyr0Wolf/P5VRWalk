@@ -1,43 +1,36 @@
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace UnityEngine.XR.OpenXR.Samples.ControllerSample
 {
     public class ActionToVisibilityISX : MonoBehaviour
     {
 
+        [FormerlySerializedAs("m_ActionReference")]
         [SerializeField]
-        InputActionProperty m_ActionReference;
-        public InputActionProperty actionReference { get => m_ActionReference; set => m_ActionReference = value; }
+        InputActionProperty actionReference;
 
-
+        [FormerlySerializedAs("m_TargetGameobject")]
         [SerializeField]
-        GameObject m_TargetGameobject = null;
-        public GameObject targetGameObject { get => m_TargetGameobject; set => m_TargetGameobject = value; }
+        GameObject targetGameobject = null;
 
-        private void Start()
-        {
-            if (m_ActionReference != null && m_ActionReference.action != null)
-                m_ActionReference.action.Enable();
-        }
+        void Start() => actionReference.action?.Enable();
 
         void Update()
         {
-            if (m_TargetGameobject == null)
+            if (targetGameobject == null)
                 return;
 
-            if (m_ActionReference != null
-                && m_ActionReference.action != null
-                && m_ActionReference.action.controls.Count > 0
-                && m_ActionReference.action.enabled == true)
+            if (actionReference.action != null
+                && actionReference.action.controls.Count > 0
+                && actionReference.action.enabled)
             {
-                m_TargetGameobject.SetActive(true);
+                targetGameobject.SetActive(true);
                 return;
             }
-            else
-            {
-                // No Matching devices:
-                m_TargetGameobject.SetActive(false);
-            }
+
+            // No Matching devices:
+            targetGameobject.SetActive(false);
         }
     }
 }

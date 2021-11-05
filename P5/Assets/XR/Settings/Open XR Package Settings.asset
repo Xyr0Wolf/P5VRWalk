@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 6993132739125107527}
   - {fileID: 4574769431320893387}
   - {fileID: -5998154047053826511}
+  - {fileID: -6476328832757741201}
   - {fileID: 3383664132893234853}
   - {fileID: 1130194195343088109}
   - {fileID: 4920445105686348343}
@@ -125,6 +126,26 @@ MonoBehaviour:
   required: 0
   cacheSize: 1048576
   perThreadCacheSize: 51200
+--- !u!114 &-6476328832757741201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe570546b5b2046873e03d7b882369, type: 3}
+  m_Name: MeshingTeapotFeature Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: 'Sample: Meshing Teapot'
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.example.meshing
+  openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0
 --- !u!114 &-5998154047053826511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +183,7 @@ MonoBehaviour:
   - {fileID: 160338987878752810}
   - {fileID: -8609651141483345675}
   - {fileID: -2689215033930794705}
+  - {fileID: -4938145703070430255}
   - {fileID: -8718960881935289163}
   - {fileID: -7239095588904378154}
   - {fileID: 5578191158907482713}
@@ -171,6 +193,26 @@ MonoBehaviour:
   - {fileID: 2328087247726831085}
   m_renderMode: 1
   m_depthSubmissionMode: 0
+--- !u!114 &-4938145703070430255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fe570546b5b2046873e03d7b882369, type: 3}
+  m_Name: MeshingTeapotFeature Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 1
+  nameUi: 'Sample: Meshing Teapot'
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.example.meshing
+  openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0
 --- !u!114 &-4823688069439668251
 MonoBehaviour:
   m_ObjectHideFlags: 0
