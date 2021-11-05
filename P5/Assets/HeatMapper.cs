@@ -13,12 +13,15 @@ public class HeatMapper : MonoBehaviour
     [SerializeField] float bellGain = 50;
     [SerializeField] float endGain = 0.01f;
     [SerializeField] float timeScale = 0.000001f;
+
+    [SerializeField] RenderTexture topCamRT;
     
     NativeList<float2> m_PlacesBeen;
     Camera m_Cam;
 
     RenderTexture m_OutputHeatMapRenderTexture;
     RenderTexture m_OutputTimeMapRenderTexture;
+    RenderTexture m_OutputTimeMapWithTopRenderTexture;
     void Start()
     {
         m_Cam = Camera.main;
@@ -31,6 +34,12 @@ public class HeatMapper : MonoBehaviour
         m_OutputTimeMapRenderTexture = new RenderTexture(2048, 2048,0) {enableRandomWrite = true};
         m_OutputTimeMapRenderTexture.Create();
         heatMapCompute.SetTexture(0,"output_time_map", m_OutputTimeMapRenderTexture);
+        
+        m_OutputTimeMapWithTopRenderTexture = new RenderTexture(2048, 2048,0) {enableRandomWrite = true};
+        m_OutputTimeMapWithTopRenderTexture.Create();
+        heatMapCompute.SetTexture(0,"output_time_map_with_top", m_OutputTimeMapWithTopRenderTexture);
+        
+        heatMapCompute.SetTexture(0, "_top_map", topCamRT);
         
         saveBtn.action.performed += callback => UpdateHeatMaps("forced");
     }
@@ -69,12 +78,19 @@ public class HeatMapper : MonoBehaviour
         RenderTexture.active = m_OutputTimeMapRenderTexture;
         outputTimeMapTexture2D.ReadPixels(new Rect(0, 0, 2048, 2048), 0, 0);
         outputTimeMapTexture2D.Apply();
+        
+        var outputTimeMapWithTopTexture2D = new Texture2D(2048, 2048);
+        RenderTexture.active = m_OutputTimeMapWithTopRenderTexture;
+        outputTimeMapWithTopTexture2D.ReadPixels(new Rect(0, 0, 2048, 2048), 0, 0);
+        outputTimeMapWithTopTexture2D.Apply();
 
         RenderTexture.active = oldRT;
 
         // Save Texture2D
         System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/HeatMap_{imageName}.png", outputHeatMapTexture2D.EncodeToPNG());
         System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/TimeMap_{imageName}.png", outputTimeMapTexture2D.EncodeToPNG());
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/TimeMapWithTop_{imageName}.png", outputTimeMapWithTopTexture2D.EncodeToPNG());
+        
         Debug.Log(Application.persistentDataPath);
         
         m_PlacesBeen.Clear();

@@ -3,6 +3,11 @@
 
 RWTexture2D<float4> output_heat_map;
 RWTexture2D<float4> output_time_map;
+RWTexture2D<float4> output_time_map_with_top;
+
+Texture2D<float4> _top_map;
+SamplerState sampler_top_map;
+
 StructuredBuffer<float2> places_been;
 int places_been_count;
 float bell_gain;
@@ -40,11 +45,10 @@ void cs_main (uint3 id : SV_DispatchThreadID)
     const float heat_norm = clamp(accumulated_amount, 0.3, 1);
     output_heat_map[id.xy] = hue_to_rgb(1-heat_norm)*saturate(accumulated_amount*2);
 
-    //accumulated_time = frac(accumulated_time*time_scale);
-    //output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*10);
-
     accumulated_time = pow(accumulated_time, 0.5);
-    //accumulated_time *= 0.00000001;
     accumulated_time = frac(accumulated_time);
-    output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*2);
+    const float4 time_color = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*2);
+    output_time_map[id.xy] = time_color;
+    
+    output_time_map_with_top[id.xy] = float4(time_color.xyz,0.5)+_top_map.SampleLevel(sampler_top_map, id.xy/2048.,0);
 }
