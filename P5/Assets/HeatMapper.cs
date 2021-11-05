@@ -67,7 +67,7 @@ public class HeatMapper : MonoBehaviour
         };
     }
 
-    void FixedUpdate()
+    void Update()
     {
         var cameraPosition = m_Cam.transform.position;
         m_PlacesBeen.Add(new float2(cameraPosition.x,cameraPosition.z));
