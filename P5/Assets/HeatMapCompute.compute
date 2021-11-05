@@ -22,6 +22,7 @@ void cs_main (uint3 id : SV_DispatchThreadID)
 {
     float accumulated_amount = 0;
     float accumulated_time = 0;
+    float some_time = 0;
     for (int i = 0; i < places_been_count; i++)
     {
         const float2 normalized_been_at = (places_been[i]+float2(5,5))/10.f;
@@ -30,13 +31,20 @@ void cs_main (uint3 id : SV_DispatchThreadID)
         nearness = saturate(nearness)*end_gain;
         
         accumulated_amount += nearness;
-        accumulated_time += nearness+i*0.01;
+        
+        some_time += i;
+        accumulated_time += nearness*some_time*time_scale;
     }
     
     accumulated_amount = pow(accumulated_amount, 0.2);
     const float heat_norm = clamp(accumulated_amount, 0.3, 1);
-    output_heat_map[id.xy] = hue_to_rgb(1-heat_norm)*saturate(accumulated_amount*10);
+    output_heat_map[id.xy] = hue_to_rgb(1-heat_norm)*saturate(accumulated_amount*2);
 
-    accumulated_time = frac(accumulated_time*time_scale);
-    output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*10);
+    //accumulated_time = frac(accumulated_time*time_scale);
+    //output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*10);
+
+    accumulated_time = pow(accumulated_time, 0.2);
+    //accumulated_time *= 0.00000001;
+    accumulated_time = frac(accumulated_time);
+    output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*2);
 }
