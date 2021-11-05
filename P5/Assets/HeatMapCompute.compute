@@ -1,11 +1,13 @@
 // Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel cs_main
 
-RWTexture2D<float4> result;
+RWTexture2D<float4> output_heat_map;
+RWTexture2D<float4> output_time_map;
 StructuredBuffer<float2> places_been;
 int places_been_count;
 float bell_gain;
 float end_gain;
+float time_scale;
 
 float4 hue_to_rgb(const in float h)
 {
@@ -19,13 +21,22 @@ float4 hue_to_rgb(const in float h)
 void cs_main (uint3 id : SV_DispatchThreadID)
 {
     float accumulated_amount = 0;
+    float accumulated_time = 0;
     for (int i = 0; i < places_been_count; i++)
     {
-        accumulated_amount += distance(id.xy/2048.f, (places_been[i]+float2(5,5))/10.f) * bell_gain;
+        const float2 normalized_been_at = (places_been[i]+float2(5,5))/10.f;
+        float nearness = distance(id.xy/2048.f, normalized_been_at); // Normalized distance, the further away the higher
+        nearness = 1 - nearness*bell_gain;
+        nearness = saturate(nearness)*end_gain;
+        
+        accumulated_amount += nearness;
+        accumulated_time += nearness+i*0.01;
     }
-
-    accumulated_amount /= places_been_count;
-    accumulated_amount *= end_gain;
     
-    result[id.xy] = hue_to_rgb(accumulated_amount);
+    accumulated_amount = pow(accumulated_amount, 0.2);
+    const float heat_norm = clamp(accumulated_amount, 0.3, 1);
+    output_heat_map[id.xy] = hue_to_rgb(1-heat_norm)*saturate(accumulated_amount*10);
+
+    accumulated_time = frac(accumulated_time*time_scale);
+    output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*10);
 }

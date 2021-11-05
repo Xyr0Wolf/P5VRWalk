@@ -10,20 +10,24 @@ public class HeatMapper : MonoBehaviour
 {
     [SerializeField] InputActionReference saveBtn;
     [SerializeField] ComputeShader heatMapCompute;
-    [SerializeField] float bellGain = 5;
-    [SerializeField] float endGain = 2;
+    [SerializeField] float bellGain = 50;
+    [SerializeField] float endGain = 0.01f;
+    [SerializeField] float timeScale = 0.000001f;
+    
     NativeList<float2> m_PlacesBeen;
     Camera m_Cam;
-
-    [SerializeField] RenderTexture outputRenderTexture;
     void Start()
     {
         m_Cam = Camera.main;
         m_PlacesBeen = new NativeList<float2>(10000, Allocator.Persistent);
 
-        outputRenderTexture = new RenderTexture(2048, 2048,0) {enableRandomWrite = true};
-        outputRenderTexture.Create();
-        heatMapCompute.SetTexture(0,"result", outputRenderTexture);
+        var outputHeatMapRenderTexture = new RenderTexture(2048, 2048,0) {enableRandomWrite = true};
+        outputHeatMapRenderTexture.Create();
+        heatMapCompute.SetTexture(0,"output_heat_map", outputHeatMapRenderTexture);
+        
+        var outputTimeMapRenderTexture = new RenderTexture(2048, 2048,0) {enableRandomWrite = true};
+        outputTimeMapRenderTexture.Create();
+        heatMapCompute.SetTexture(0,"output_time_map", outputTimeMapRenderTexture);
 
         saveBtn.action.performed += context =>
         {
@@ -35,22 +39,31 @@ public class HeatMapper : MonoBehaviour
             heatMapCompute.SetInt("places_been_count", placesBeenArr.Length);
             heatMapCompute.SetFloat("bell_gain", bellGain);
             heatMapCompute.SetFloat("end_gain", endGain);
+            heatMapCompute.SetFloat("time_scale", timeScale);
 
             // Write to RenderTexture
             heatMapCompute.Dispatch(0,64,64,1);
             placesBeenBuffer.Dispose();
             
             // Convert RenderTexture to Texture2D
-            var outputTexture2D = new Texture2D(2048,2048);
             var oldRT = RenderTexture.active;
-            RenderTexture.active = outputRenderTexture;
-            outputTexture2D.ReadPixels(new Rect(0,0,2048,2048),0,0);
-            outputTexture2D.Apply();
+            
+            var outputHeatMapTexture2D = new Texture2D(2048,2048);
+            RenderTexture.active = outputHeatMapRenderTexture;
+            outputHeatMapTexture2D.ReadPixels(new Rect(0,0,2048,2048),0,0);
+            outputHeatMapTexture2D.Apply();
+            
+            var outputTimeMapTexture2D = new Texture2D(2048,2048);
+            RenderTexture.active = outputTimeMapRenderTexture;
+            outputTimeMapTexture2D.ReadPixels(new Rect(0,0,2048,2048),0,0);
+            outputTimeMapTexture2D.Apply();
+
             RenderTexture.active = oldRT;
             
             // Save Texture2D
-            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/SavedScreen.png", outputTexture2D.EncodeToPNG());
-            Debug.Log(Application.persistentDataPath + "/SavedScreen.png");
+            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/HeatMap.png", outputHeatMapTexture2D.EncodeToPNG());
+            System.IO.File.WriteAllBytes(Application.persistentDataPath + "/TimeMap.png", outputTimeMapTexture2D.EncodeToPNG());
+            Debug.Log(Application.persistentDataPath);
         };
     }
 

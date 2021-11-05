@@ -1714,7 +1714,9 @@ MonoBehaviour:
   saveBtn: {fileID: -8514278639596572500, guid: e0ca4504471ca124088e1e2cfe6804ae,
     type: 3}
   heatMapCompute: {fileID: 7200000, guid: 805cee92326175446b88bc6f0401b2b7, type: 3}
-  bellGain: 10
+  bellGain: 50
+  endGain: 0.001
+  outputRenderTexture: {fileID: 0}
 --- !u!1 &1313988253
 GameObject:
   m_ObjectHideFlags: 0
