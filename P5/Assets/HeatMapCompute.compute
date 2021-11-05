@@ -43,7 +43,7 @@ void cs_main (uint3 id : SV_DispatchThreadID)
     //accumulated_time = frac(accumulated_time*time_scale);
     //output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*10);
 
-    accumulated_time = pow(accumulated_time, 0.2);
+    accumulated_time = pow(accumulated_time, 0.5);
     //accumulated_time *= 0.00000001;
     accumulated_time = frac(accumulated_time);
     output_time_map[id.xy] = hue_to_rgb(accumulated_time)*saturate(accumulated_amount*2);
