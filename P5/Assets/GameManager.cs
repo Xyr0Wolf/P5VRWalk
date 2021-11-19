@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        m_TimeBetweenSwitchInSecondsLeft = timeBetweenSwitchInSeconds;
         m_Cam = Camera.main;
         textScreen.text = "";
         m_HeatMapper = FindObjectOfType<HeatMapper>();
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
     
     IEnumerator SwitchScenario()
     {
-        m_HeatMapper.UpdateHeatMaps(m_NextScenario.ToString());
+        m_HeatMapper.UpdateHeatMaps((m_NextScenario-1).ToString());
         yield return new WaitForSeconds(1f);
         
         DestroyCurrentScenario();
