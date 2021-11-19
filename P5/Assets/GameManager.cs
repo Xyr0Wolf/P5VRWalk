@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
     
     IEnumerator SwitchScenario()
     {
-        m_HeatMapper.UpdateHeatMaps((m_NextScenario-1).ToString());
+        //m_HeatMapper.UpdateHeatMaps((m_NextScenario-1).ToString());
         yield return new WaitForSeconds(1f);
         
         DestroyCurrentScenario();
