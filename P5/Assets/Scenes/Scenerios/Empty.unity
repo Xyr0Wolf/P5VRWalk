@@ -1397,6 +1397,7 @@ GameObject:
   - component: {fileID: 1288371443}
   - component: {fileID: 1288371444}
   - component: {fileID: 1288371440}
+  - component: {fileID: 1288371441}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -1453,8 +1454,23 @@ MonoBehaviour:
   liveHeatMapCompute: {fileID: 7200000, guid: 52bada382afd4e5aa3567cce5fc14541, type: 3}
   drawRTMaterial: {fileID: 2100000, guid: 147e52a73f22e9542a6a11f81b81aafe, type: 2}
   topCam: {fileID: 1633021531}
-  initialGain: 100
-  endGain: 1
+  initialGain: 40
+  endGain: 0.8
+--- !u!114 &1288371441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288371437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df38af257169df49a52f5ed354808e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  speed: 1
+  angularSpeed: 0.5
 --- !u!114 &1288371442
 MonoBehaviour:
   m_ObjectHideFlags: 0

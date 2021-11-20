@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
@@ -27,9 +28,14 @@ public class LiveHeatMapper : MonoBehaviour
 
     Camera m_Cam;
     static readonly int k_MainTEX = Shader.PropertyToID("_MainTex");
+    string m_DateTimeNowTicks;
+    
+    [Header("Testing Variables")]
+    [SerializeField] float4 testVar = 1;
 
     void Start()
     {
+        m_DateTimeNowTicks = DateTime.Now.Ticks.ToString();
         m_TimeSinceCaptureBegan = Time.time;
         m_Cam = Camera.main;
 
@@ -61,7 +67,7 @@ public class LiveHeatMapper : MonoBehaviour
         liveHeatMapCompute.SetFloat("initial_gain", initialGain);
         liveHeatMapCompute.SetFloat("end_gain", endGain);
         
-        drawRTMaterial.SetTexture(k_MainTEX, m_OutputTimeMapWithTopRenderTexture);
+        drawRTMaterial.SetTexture(k_MainTEX, m_OutputTimeMapRenderTexture);
 
         // Add Command Buffer to draw HeatMapOnScreen
         var commandBuffer = new CommandBuffer {name = "Draw HeatMap"};
@@ -83,6 +89,7 @@ public class LiveHeatMapper : MonoBehaviour
         // Update live
         liveHeatMapCompute.SetFloat("initial_gain", initialGain);
         liveHeatMapCompute.SetFloat("end_gain", endGain);
+        liveHeatMapCompute.SetFloats("test_var", testVar.x,testVar.y,testVar.z,testVar.w);
     }
     
     void FixedUpdate()
@@ -113,14 +120,16 @@ public class LiveHeatMapper : MonoBehaviour
         outputTimeMapWithTopTexture2D.Apply();
 
         // Save Texture2D
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{DateTime.Now}_HeatMap_{imageName}.png", outputHeatMapTexture2D.EncodeToPNG());
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{DateTime.Now}_TimeMap_{imageName}.png", outputTimeMapTexture2D.EncodeToPNG());
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{DateTime.Now}_TimeMapWithTop_{imageName}.png", outputTimeMapWithTopTexture2D.EncodeToPNG());
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{m_DateTimeNowTicks}_HeatMap_{imageName}.png", outputHeatMapTexture2D.EncodeToPNG());
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{m_DateTimeNowTicks}_TimeMap_{imageName}.png", outputTimeMapTexture2D.EncodeToPNG());
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{m_DateTimeNowTicks}_TimeMapWithTop_{imageName}.png", outputTimeMapWithTopTexture2D.EncodeToPNG());
         
         Debug.Log(Application.persistentDataPath);
 
         RenderTexture.active = m_AggregateMap;
         GL.Clear(false, true, Color.clear);
+        m_TimeSinceCaptureBegan = Time.time;
+
 
         RenderTexture.active = oldRT;
     }

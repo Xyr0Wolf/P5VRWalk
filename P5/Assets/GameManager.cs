@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     Camera m_Cam;
     HeatMapper m_HeatMapper;
+    LiveHeatMapper m_LiveHeatMapper;
     
     float m_TimeBetweenSwitchInSecondsLeft;
     Scenarios m_NextScenario = Scenarios.InterestingObjectsFar;
@@ -56,7 +57,8 @@ public class GameManager : MonoBehaviour
         m_TimeBetweenSwitchInSecondsLeft = timeBetweenSwitchInSeconds;
         m_Cam = Camera.main;
         textScreen.text = "";
-        m_HeatMapper = FindObjectOfType<HeatMapper>();
+        m_HeatMapper = GetComponent<HeatMapper>();
+        m_LiveHeatMapper = GetComponent<LiveHeatMapper>();
     }
 
     void Update()
@@ -109,7 +111,7 @@ public class GameManager : MonoBehaviour
     
     IEnumerator SwitchScenario()
     {
-        //m_HeatMapper.UpdateHeatMaps((m_NextScenario-1).ToString());
+        m_LiveHeatMapper.UpdateHeatMaps($"{(int)m_NextScenario-1}{m_NextScenario-1}");
         yield return new WaitForSeconds(1f);
         
         DestroyCurrentScenario();
