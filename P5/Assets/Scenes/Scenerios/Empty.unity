@@ -335,7 +335,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23848
+  m_Name: pb_Mesh36880
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1215,7 +1215,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23752
+  m_Name: pb_Mesh36784
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1454,8 +1454,13 @@ MonoBehaviour:
   liveHeatMapCompute: {fileID: 7200000, guid: 52bada382afd4e5aa3567cce5fc14541, type: 3}
   drawRTMaterial: {fileID: 2100000, guid: 147e52a73f22e9542a6a11f81b81aafe, type: 2}
   topCam: {fileID: 1633021531}
-  initialGain: 40
+  initialGain: 50
   endGain: 0.8
+  testVar:
+    x: 1
+    y: 1
+    z: 1
+    w: 1
 --- !u!114 &1288371441
 MonoBehaviour:
   m_ObjectHideFlags: 0

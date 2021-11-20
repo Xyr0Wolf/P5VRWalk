@@ -51,10 +51,10 @@ void cs_draw_map (uint3 id : SV_DispatchThreadID)
 {
     const float2 height_and_time = aggregate_map[id.xy];
     const float height01 = saturate(height_and_time.x);
-    output_heat_map[id.xy] = hue_to_rgb(1-height_and_time.x)*saturate(height01*2);
+    output_heat_map[id.xy] = hue_to_rgb(saturate(height_and_time.x*0.3))*saturate(height01*2);
 
     const float time_norm = frac(height_and_time.y*0.05);
-    const float4 time_color = hue_to_rgb(1-time_norm)*saturate(height_and_time.y*0.5);
+    const float4 time_color = hue_to_rgb(time_norm)*saturate(height_and_time.y*0.5);
     output_time_map[id.xy] = time_color;
     output_time_map_with_top[id.xy] = time_color + (1-time_color.a) * top_map[id.xy];
 }

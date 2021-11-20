@@ -75,7 +75,7 @@ public class LiveHeatMapper : MonoBehaviour
         drawDebugHeatmapOnScreenMaterial.SetTexture("heat_map", m_OutputHeatMapRenderTexture);
         drawDebugHeatmapOnScreenMaterial.SetTexture("time_map", m_OutputTimeMapRenderTexture);
         drawDebugHeatmapOnScreenMaterial.SetTexture("time_map_with_top", m_OutputTimeMapWithTopRenderTexture);
-        commandBuffer.Blit(m_OutputHeatMapRenderTexture,BuiltinRenderTextureType.CameraTarget, drawDebugHeatmapOnScreenMaterial);
+        commandBuffer.Blit(null,BuiltinRenderTextureType.CameraTarget, drawDebugHeatmapOnScreenMaterial);
         m_Cam.AddCommandBuffer(CameraEvent.AfterEverything, commandBuffer);
     }
 
@@ -87,9 +87,9 @@ public class LiveHeatMapper : MonoBehaviour
         liveHeatMapCompute.Dispatch(0, 64, 64, 1);
 
         // Update live
-        liveHeatMapCompute.SetFloat("initial_gain", initialGain);
-        liveHeatMapCompute.SetFloat("end_gain", endGain);
-        liveHeatMapCompute.SetFloats("test_var", testVar.x,testVar.y,testVar.z,testVar.w);
+        //liveHeatMapCompute.SetFloat("initial_gain", initialGain);
+        //liveHeatMapCompute.SetFloat("end_gain", endGain);
+        //liveHeatMapCompute.SetFloats("test_var", testVar.x,testVar.y,testVar.z,testVar.w);
     }
     
     void FixedUpdate()
@@ -129,7 +129,6 @@ public class LiveHeatMapper : MonoBehaviour
         RenderTexture.active = m_AggregateMap;
         GL.Clear(false, true, Color.clear);
         m_TimeSinceCaptureBegan = Time.time;
-
 
         RenderTexture.active = oldRT;
     }
