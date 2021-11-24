@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 public class LiveHeatMapper : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class LiveHeatMapper : MonoBehaviour
     [Header("Testing Variables")]
     [SerializeField] float4 testVar = 1;
 
+    [Header("Debug Settings")]
+    [SerializeField] bool showDebugView;
     void Start()
     {
         m_DateTimeNowTicks = DateTime.Now.Ticks.ToString();
@@ -77,7 +80,7 @@ public class LiveHeatMapper : MonoBehaviour
         drawDebugHeatmapOnScreenMaterial.SetTexture("time_map", m_OutputTimeMapRenderTexture);
         drawDebugHeatmapOnScreenMaterial.SetTexture("time_map_with_top", m_OutputTimeMapWithTopRenderTexture);
         commandBuffer.Blit(null,BuiltinRenderTextureType.CameraTarget, drawDebugHeatmapOnScreenMaterial);
-        m_Cam.AddCommandBuffer(CameraEvent.AfterEverything, commandBuffer);
+        if (showDebugView) m_Cam.AddCommandBuffer(CameraEvent.AfterEverything, commandBuffer);
     }
 
     void Update()

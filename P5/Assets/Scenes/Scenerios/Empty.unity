@@ -1462,6 +1462,7 @@ MonoBehaviour:
     y: 1
     z: 1
     w: 1
+  showDebugView: 0
 --- !u!114 &1288371441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1522,7 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d09e19ad9da24446a0ac024fce1daae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenSwitchInSeconds: 10
+  timeBetweenSwitchInSeconds: 60
   nearFog: 0.85
   farFog: 0.15
   textScreen: {fileID: 38791478}
