@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(LiveHeatMapper), typeof(VelToCsv), typeof(IntrusionCalculator))]
-public class GameManager : MonoBehaviour
+public class GameManagerScenarios : MonoBehaviour
 {
     enum Scenarios
     {

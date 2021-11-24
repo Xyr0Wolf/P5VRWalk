@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.XR.Oculus;
+using Unity.XR.Oculus.Input;
+using Unity.XR.OpenVR;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -20,6 +23,8 @@ namespace DefaultNamespace
                     foreach (var point in currentBoundaries)
                         Debug.DrawLine(point,point+Vector3.up*10f);
             };
+            
+            //new OculusLoader().
             
             // var currentBoundaries = new List<Vector3>();
             // if (inputSubsystem.TryGetBoundaryPoints(currentBoundaries))
