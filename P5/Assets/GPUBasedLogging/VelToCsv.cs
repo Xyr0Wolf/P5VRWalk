@@ -26,10 +26,10 @@ namespace DefaultNamespace.GPUBasedLogging
             m_CamPosLast = camPos;
         }
 
-        public void SaveAndResetList(string columnName)
+        public void CreateOrAppendAndReset(string columnName)
         {
             using var file = new StreamWriter(Application.persistentDataPath + $"/Velocities.tsv", true, Encoding.ASCII);
-            var writtenColumn = $"{columnName}\t" + string.Join("\t", m_Velocities.AsArray().Select(vel => vel.ToString("0.0000000000")));
+            var writtenColumn = $"{TickOnStart.s_DateTimeNowTicks}\t{columnName}\t" + string.Join("\t", m_Velocities.AsArray().Select(vel => vel.ToString("0.0000000000")));
             file.WriteLine(writtenColumn);
             
             m_Velocities.Clear();

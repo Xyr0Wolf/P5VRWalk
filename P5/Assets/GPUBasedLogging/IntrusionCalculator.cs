@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -12,7 +14,7 @@ namespace DefaultNamespace.GPUBasedLogging
         [Header("Settings")]
         [SerializeField] float maxHeadsetVelocity = 10f;
         
-        [SerializeField] RenderTexture m_IntrusionObjectRT;
+        RenderTexture m_IntrusionObjectRT;
         Camera m_Cam;
         void Start()
         {
@@ -55,6 +57,14 @@ namespace DefaultNamespace.GPUBasedLogging
             }
 
             m_Value += GetCoverPercentage(m_IntrusionObjectRT)*Time.deltaTime*(1+math.max(math.saturate(objVel),math.smoothstep(0,maxHeadsetVelocity,hmdVel)));
+        }
+        
+        public void SaveAndReset(string columnName)
+        {
+            using var file = new StreamWriter(Application.persistentDataPath + $"/Intrusion.tsv", true, Encoding.ASCII);
+            file.WriteLine($"{TickOnStart.s_DateTimeNowTicks}\t{columnName}\t{m_Value:0.0000000000}");
+            
+            m_Value = 0f;
         }
 
         public static float GetCoverPercentage(RenderTexture renderTexture)

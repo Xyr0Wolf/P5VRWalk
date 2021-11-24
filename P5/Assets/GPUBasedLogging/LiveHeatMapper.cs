@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace;
 using DefaultNamespace.GPUBasedLogging;
 using Unity.Mathematics;
 using UnityEngine;
@@ -30,13 +31,11 @@ public class LiveHeatMapper : MonoBehaviour
 
     Camera m_Cam;
     static readonly int k_MainTEX = Shader.PropertyToID("_MainTex");
-    string m_DateTimeNowTicks;
 
     [Header("Debug Settings")]
     [SerializeField] bool showDebugView;
     void Start()
     {
-        m_DateTimeNowTicks = DateTime.Now.Ticks.ToString();
         m_TimeSinceCaptureBegan = Time.time;
         m_Cam = Camera.main;
 
@@ -99,7 +98,7 @@ public class LiveHeatMapper : MonoBehaviour
         liveHeatMapCompute.Dispatch(1, 64, 64, 1);
     }
     
-    public void UpdateHeatMaps(string filename)
+    public void SaveAndReset(string filename)
     {
         // Convert RenderTexture to Texture2D
         var oldRT = RenderTexture.active;
@@ -124,9 +123,9 @@ public class LiveHeatMapper : MonoBehaviour
         var heatCoverage = 100f * IntrusionCalculator.GetCoverPercentage(saturatedMapRT);
         
         // Save Texture2D
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{m_DateTimeNowTicks}_HeatMap_{filename}_{heatCoverage:0.00}p.png", outputHeatMapTexture2D.EncodeToPNG());
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{m_DateTimeNowTicks}_TimeMap_{filename}.png", outputTimeMapTexture2D.EncodeToPNG());
-        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{m_DateTimeNowTicks}_TimeMapWithTop_{filename}.png", outputTimeMapWithTopTexture2D.EncodeToPNG());
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{TickOnStart.s_DateTimeNowTicks}_HeatMap_{filename}_{heatCoverage:0.00}p.png", outputHeatMapTexture2D.EncodeToPNG());
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{TickOnStart.s_DateTimeNowTicks}_TimeMap_{filename}.png", outputTimeMapTexture2D.EncodeToPNG());
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + $"/{TickOnStart.s_DateTimeNowTicks}_TimeMapWithTop_{filename}.png", outputTimeMapWithTopTexture2D.EncodeToPNG());
         
         Debug.Log(Application.persistentDataPath);
 

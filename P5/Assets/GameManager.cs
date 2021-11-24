@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LiveHeatMapper), typeof(VelToCsv))]
+[RequireComponent(typeof(LiveHeatMapper), typeof(VelToCsv), typeof(IntrusionCalculator))]
 public class GameManager : MonoBehaviour
 {
     enum Scenarios
@@ -43,8 +43,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject coinsPrefab;
 
     Camera m_Cam;
+    
+    // Loggers
     LiveHeatMapper m_LiveHeatMapper;
     VelToCsv m_VelToCsv;
+    IntrusionCalculator m_IntrusionCalculator;
     
     float m_TimeBetweenSwitchInSecondsLeft;
     Scenarios m_NextScenario = Scenarios.InterestingObjectsFar;
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
         textScreen.text = "";
         m_LiveHeatMapper = GetComponent<LiveHeatMapper>();
         m_VelToCsv = GetComponent<VelToCsv>();
+        m_IntrusionCalculator = GetComponent<IntrusionCalculator>();
     }
 
     void Update()
@@ -114,8 +118,9 @@ public class GameManager : MonoBehaviour
     IEnumerator SwitchScenario()
     {
         var nameOfScenario = $"{(int) m_NextScenario - 1}{m_NextScenario - 1}";
-        m_LiveHeatMapper.UpdateHeatMaps(nameOfScenario);
-        m_VelToCsv.SaveAndResetList(nameOfScenario);
+        m_LiveHeatMapper.SaveAndReset(nameOfScenario);
+        m_VelToCsv.CreateOrAppendAndReset(nameOfScenario);
+        m_IntrusionCalculator.SaveAndReset(nameOfScenario);
         yield return new WaitForSeconds(1.5f);
         
         DestroyCurrentScenario();
