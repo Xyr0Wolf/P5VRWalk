@@ -29,7 +29,7 @@ namespace DefaultNamespace.GPUBasedLogging
         public void SaveAndResetList(string columnName)
         {
             using var file = new StreamWriter(Application.persistentDataPath + $"/Velocities.tsv", true, Encoding.ASCII);
-            var writtenColumn = $"{columnName}; " + string.Join("\t ", m_Velocities.ToArray().Select(vel => vel.ToString("0.0000000000")));
+            var writtenColumn = $"{columnName}\t" + string.Join("\t", m_Velocities.AsArray().Select(vel => vel.ToString("0.0000000000")));
             file.WriteLine(writtenColumn);
             
             m_Velocities.Clear();

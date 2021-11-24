@@ -44,13 +44,13 @@ namespace DefaultNamespace.GPUBasedLogging
             m_Cam.Render();
 
             var currentPos = m_Cam.transform.position + m_Cam.transform.forward;
-            var hmdVel = (m_LastPos - currentPos).magnitude;
+            var hmdVel = (m_LastPos - currentPos).magnitude/Time.deltaTime;
             m_LastPos = currentPos;
             
             var objVel = 0f;
             if (movingIntrusion)
             {
-                objVel = (m_MovingIntrusionLastPos - movingIntrusion.position).magnitude;
+                objVel = (m_MovingIntrusionLastPos - movingIntrusion.position).magnitude/Time.deltaTime;
                 m_MovingIntrusionLastPos = movingIntrusion.position;
             }
 
