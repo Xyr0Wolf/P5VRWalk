@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.GPUBasedLogging;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(LiveHeatMapper), typeof(VelToCsv))]
 public class GameManager : MonoBehaviour
 {
     enum Scenarios
@@ -41,8 +43,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject coinsPrefab;
 
     Camera m_Cam;
-    HeatMapper m_HeatMapper;
     LiveHeatMapper m_LiveHeatMapper;
+    VelToCsv m_VelToCsv;
     
     float m_TimeBetweenSwitchInSecondsLeft;
     Scenarios m_NextScenario = Scenarios.InterestingObjectsFar;
@@ -57,8 +59,8 @@ public class GameManager : MonoBehaviour
         m_TimeBetweenSwitchInSecondsLeft = timeBetweenSwitchInSeconds;
         m_Cam = Camera.main;
         textScreen.text = "";
-        m_HeatMapper = GetComponent<HeatMapper>();
         m_LiveHeatMapper = GetComponent<LiveHeatMapper>();
+        m_VelToCsv = GetComponent<VelToCsv>();
     }
 
     void Update()
@@ -111,8 +113,10 @@ public class GameManager : MonoBehaviour
     
     IEnumerator SwitchScenario()
     {
-        m_LiveHeatMapper.UpdateHeatMaps($"{(int)m_NextScenario-1}{m_NextScenario-1}");
-        yield return new WaitForSeconds(1f);
+        var nameOfScenario = $"{(int) m_NextScenario - 1}{m_NextScenario - 1}";
+        m_LiveHeatMapper.UpdateHeatMaps(nameOfScenario);
+        m_VelToCsv.SaveAndResetList(nameOfScenario);
+        yield return new WaitForSeconds(1.5f);
         
         DestroyCurrentScenario();
         switch (m_NextScenario)

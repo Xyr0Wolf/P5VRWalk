@@ -12,7 +12,7 @@ namespace DefaultNamespace.GPUBasedLogging
         [Header("Settings")]
         [SerializeField] float maxHeadsetVelocity = 10f;
         
-        RenderTexture m_IntrusionObjectRT;
+        [SerializeField] RenderTexture m_IntrusionObjectRT;
         Camera m_Cam;
         void Start()
         {
@@ -26,6 +26,8 @@ namespace DefaultNamespace.GPUBasedLogging
             m_Cam.enabled = false;
             m_Cam.transform.SetParent(camMain.transform);
             m_Cam.CopyFrom(camMain);
+            m_Cam.farClipPlane = 10f;
+            m_Cam.nearClipPlane = 0.01f;
             m_Cam.backgroundColor = Color.clear;
             
             m_Cam.cullingMask = 1 << LayerMask.NameToLayer("Intrusion");

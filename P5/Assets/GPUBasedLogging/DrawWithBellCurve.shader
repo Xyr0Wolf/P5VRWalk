@@ -4,8 +4,7 @@
     {
         Tags {"RenderType"="Opaque"}
         
-        // No culling or depth
-        Cull Off 
+        // No depth
         ZWrite Off 
         ZTest Off
         
@@ -38,8 +37,10 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                const float x = distance(i.screen_pos.xy/i.screen_pos.w, 0);
-                return exp(-(x*x)/0.1); // simplified gauss func
+                const float3 screen_pos = i.screen_pos.xyz/i.screen_pos.w;
+                const float x = distance(screen_pos.xy, 0);
+                const float gauss = exp(-(x*x)/0.2);
+                return gauss*saturate(screen_pos.z*screen_pos.z*1000); // simplified gauss func
             }
             ENDCG
         }

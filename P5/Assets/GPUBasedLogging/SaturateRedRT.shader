@@ -14,7 +14,7 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-                return smoothstep(0,0.1,tex2D(_MainTex, i.uv).r);
+                return smoothstep(0,0.05,tex2D(_MainTex, i.uv).r);
             }
             ENDCG
         }
