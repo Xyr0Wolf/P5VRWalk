@@ -1,0 +1,47 @@
+﻿Shader "Hidden/DrawWithBellCurve"
+{
+    SubShader
+    {
+        Tags {"RenderType"="Opaque"}
+        
+        // No culling or depth
+        Cull Off 
+        ZWrite Off 
+        ZTest Off
+        
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float4 screen_pos : TEXCOORD0;
+            };
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.screen_pos = o.vertex;
+                return o;
+            }
+
+            fixed4 frag (v2f i) : SV_Target
+            {
+                const float x = distance(i.screen_pos.xy/i.screen_pos.w, 0);
+                return exp(-(x*x)/0.1); // simplified gauss func
+            }
+            ENDCG
+        }
+    }
+}

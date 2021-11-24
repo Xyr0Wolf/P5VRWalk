@@ -1,0 +1,15 @@
+#pragma kernel cs_convolution_based_accumulator 
+
+// Aggregated map, which is an accumulation over time
+Texture1D<float> input;
+RWTexture1D<float> output;
+
+[numthreads(1024,1,1)]
+void cs_convolution_based_accumulator(uint3 id : SV_DispatchThreadID)
+{
+    output[id.x*8] =
+        input[id.x*8] + input[id.x*8+1]
+    + input[id.x*8+2] + input[id.x*8+3]
+    + input[id.x*8+4] + input[id.x*8+5]
+    + input[id.x*8+6] + input[id.x*8+7];
+}
