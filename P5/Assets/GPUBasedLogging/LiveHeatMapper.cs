@@ -31,9 +31,6 @@ public class LiveHeatMapper : MonoBehaviour
     Camera m_Cam;
     static readonly int k_MainTEX = Shader.PropertyToID("_MainTex");
     string m_DateTimeNowTicks;
-    
-    [Header("Testing Variables")]
-    [SerializeField] float4 testVar = 1;
 
     [Header("Debug Settings")]
     [SerializeField] bool showDebugView;
@@ -93,7 +90,6 @@ public class LiveHeatMapper : MonoBehaviour
         // Update live
         //liveHeatMapCompute.SetFloat("initial_gain", initialGain);
         //liveHeatMapCompute.SetFloat("end_gain", endGain);
-        //liveHeatMapCompute.SetFloats("test_var", testVar.x,testVar.y,testVar.z,testVar.w);
     }
     
     void FixedUpdate()
@@ -102,9 +98,7 @@ public class LiveHeatMapper : MonoBehaviour
         topCam.Render();
         liveHeatMapCompute.Dispatch(1, 64, 64, 1);
     }
-
-    [SerializeField]
-    RenderTexture saturatedMapRT;
+    
     public void UpdateHeatMaps(string filename)
     {
         // Convert RenderTexture to Texture2D
@@ -123,7 +117,7 @@ public class LiveHeatMapper : MonoBehaviour
         outputTimeMapWithTopTexture2D.ReadPixels(new Rect(0, 0, 2048, 2048), 0, 0);
 
         // Calculate Coverage
-        saturatedMapRT = new RenderTexture(m_AggregateMap.width, m_AggregateMap.height,0,GraphicsFormat.R32_SFloat){useMipMap = true};
+        var saturatedMapRT = new RenderTexture(m_AggregateMap.width, m_AggregateMap.height,0,GraphicsFormat.R32_SFloat){useMipMap = true};
         var saturateRedMaterial = new Material(Shader.Find("Hidden/SaturateRedRT"));
         saturateRedMaterial.SetTexture("_MainTex", m_AggregateMap);
         Graphics.Blit(m_AggregateMap, saturatedMapRT, saturateRedMaterial);
