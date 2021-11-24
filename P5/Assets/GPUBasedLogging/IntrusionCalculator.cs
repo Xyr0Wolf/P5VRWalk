@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
@@ -8,7 +9,9 @@ namespace DefaultNamespace.GPUBasedLogging
 {
     public class IntrusionCalculator : MonoBehaviour
     {
-        [SerializeField] float value;
+        [Header("Settings")]
+        [SerializeField] float maxHeadsetVelocity = 10f;
+        
         RenderTexture m_IntrusionObjectRT;
         Camera m_Cam;
         void Start()
@@ -29,10 +32,27 @@ namespace DefaultNamespace.GPUBasedLogging
             m_Cam.targetTexture = m_IntrusionObjectRT;
             m_Cam.SetReplacementShader(Shader.Find("Hidden/DrawWithBellCurve"),"RenderType");
         }
+
+        [SerializeField] Transform movingIntrusion;
+        Vector3 m_MovingIntrusionLastPos;
+        Vector3 m_LastPos;
+        float m_Value;
         void Update()
         {
             m_Cam.Render();
-            value += GetCoverPercentage(m_IntrusionObjectRT)*Time.deltaTime;
+
+            var currentPos = m_Cam.transform.position + m_Cam.transform.forward;
+            var hmdVel = (m_LastPos - currentPos).magnitude;
+            m_LastPos = currentPos;
+            
+            var objVel = 0f;
+            if (movingIntrusion)
+            {
+                objVel = (m_MovingIntrusionLastPos - movingIntrusion.position).magnitude;
+                m_MovingIntrusionLastPos = movingIntrusion.position;
+            }
+
+            m_Value += GetCoverPercentage(m_IntrusionObjectRT)*Time.deltaTime*(1+math.max(math.saturate(objVel),math.smoothstep(0,maxHeadsetVelocity,hmdVel)));
         }
 
         public static float GetCoverPercentage(RenderTexture renderTexture)
