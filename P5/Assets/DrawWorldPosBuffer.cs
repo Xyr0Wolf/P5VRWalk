@@ -75,7 +75,7 @@ namespace DefaultNamespace
             }; m_ScreenDataVertexBuffer.SetData(screenDataVertexArray);
         }
         
-        void OnDrawGizmos()
+        void OnDrawGizmosSelected()
         {
             var screenDataVertexArray = new ScreenDataVertex[m_ScreenDataVertexBuffer.count];
             m_ScreenDataVertexBuffer.GetData(screenDataVertexArray);

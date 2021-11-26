@@ -19,6 +19,8 @@ namespace DefaultNamespace
     {
         NativeArray<float2> m_Points;
         ComputeBuffer m_PointBuffer;
+        CommandBuffer m_DecalCommandBuffer;
+        [SerializeField] Texture2D picture;
 
         void OnEnable() => Start();
 
@@ -49,6 +51,11 @@ namespace DefaultNamespace
             m_PointBuffer = new ComputeBuffer(m_Points.Length,UnsafeUtility.SizeOf<float2>(), ComputeBufferType.Structured);
             m_PointBuffer.SetData(m_Points);
             Shader.SetGlobalBuffer("points", m_PointBuffer);
+
+            m_DecalCommandBuffer = new CommandBuffer {name = "Draw Wall Decal"};
+            var decalMaterial = new Material(Shader.Find("Hidden/DrawWallsDeferredDecal"));
+            m_DecalCommandBuffer.Blit(picture,BuiltinRenderTextureType.CameraTarget, decalMaterial);
+            Camera.main.AddCommandBuffer(CameraEvent.AfterImageEffects, m_DecalCommandBuffer);
         }
 
         void FillArrayWithBoundaryPoints(XRInputSubsystem inputSubsystem)
@@ -69,6 +76,8 @@ namespace DefaultNamespace
 
         void OnDrawGizmosSelected()
         {
+            if (m_PointBuffer == null || !m_PointBuffer.IsValid()) return;
+            
             var points = new float2[m_PointBuffer.count];
             m_PointBuffer.GetData(points);
             for (var i = 0; i < points.Length; i++)
@@ -83,6 +92,11 @@ namespace DefaultNamespace
             }
         }
 
-        void OnDisable() => m_PointBuffer?.Dispose();
+        void OnDisable()
+        {
+            Camera.main.RemoveCommandBuffers(CameraEvent.AfterImageEffects);
+            m_DecalCommandBuffer?.Dispose();
+            m_PointBuffer?.Dispose();
+        }
     }
 }
