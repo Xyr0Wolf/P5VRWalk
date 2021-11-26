@@ -8,6 +8,8 @@ Shader "Unlit/Wave"
         _Speed ("Speed", float) = 1
         _FalloffGain ("Falloff Gain", float) = 1
         _FalloffOffset ("Falloff Offset", float) = 1
+        _Ratio ("Ratio", float) = 2
+        _Thinness ("Thinness", float) = 0.2
     }
     
     SubShader
@@ -45,6 +47,8 @@ Shader "Unlit/Wave"
             float _Speed;
             float _FalloffGain;
             float _FalloffOffset;
+            float _Ratio;
+            float _Thinness;
             
             v2f vert (appdata v)
             {
@@ -60,16 +64,16 @@ Shader "Unlit/Wave"
             {
                 clip(0.1-i.normal.y);
                 
-                float side_wave_val = sin((i.object_space_pos.y+1)*_Frequency*UNITY_TWO_PI-_Time.y*_Speed);
+                float side_wave_val = 0.5+0.5*sin((i.object_space_pos.y+1)*_Frequency*UNITY_TWO_PI-_Time.y*_Speed);
                 side_wave_val *= side_wave_val; 
-                side_wave_val = smoothstep(0.2,1,side_wave_val);
+                side_wave_val = smoothstep(_Thinness,1,side_wave_val);
                 side_wave_val *= saturate(1-(i.object_space_pos.y+_FalloffOffset)*_FalloffGain);
                 const float4 wave_col = lerp(_ColorA,_ColorB,side_wave_val);
                 
                 const float is_bottom = step(i.normal.y, -0.1);
-                float bottom_wave_val = 0.5+0.5*sin(length(i.object_space_pos.xz*2)*_Frequency*UNITY_TWO_PI*2-_Time.y*_Speed*1);
+                float bottom_wave_val = 0.5+0.5*sin(length(i.object_space_pos.xz)*_Frequency*UNITY_TWO_PI*_Ratio-_Time.y*_Speed);
                 bottom_wave_val *= bottom_wave_val; 
-                bottom_wave_val = smoothstep(0.2,1,bottom_wave_val);
+                bottom_wave_val = smoothstep(_Thinness,1,bottom_wave_val);
                 const float4 bottom_col = lerp(_ColorA,_ColorB,bottom_wave_val);
                 
                 return wave_col*(1-is_bottom)+bottom_col*is_bottom;

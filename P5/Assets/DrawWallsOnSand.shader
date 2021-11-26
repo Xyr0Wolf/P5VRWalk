@@ -46,12 +46,13 @@
             {
                 float val = 0;
 
-                for (int i = 0; i < 256; i++)
+                for (int i = 0; i < 128; i++)
                 {
-                    val += saturate(1-2*distance(points[i], input.world_space_pos.xz));
+                    const float2 current_point = points[i];
+                    val += (current_point==0)*saturate(1-25*distance(current_point, input.world_space_pos.xz));
                 }
                 
-                return val;
+                return saturate(val)*float4(1,1,0,1);
             }
             ENDCG
         }
