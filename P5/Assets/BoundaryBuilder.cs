@@ -8,6 +8,7 @@ using Unity.XR.Oculus;
 using Unity.XR.Oculus.Input;
 using Unity.XR.OpenVR;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.XR;
 using Random = Unity.Mathematics.Random;
 
@@ -17,7 +18,6 @@ namespace DefaultNamespace
     public class BoundaryBuilder : MonoBehaviour
     {
         NativeArray<float2> m_Points;
-        Material m_Material;
         ComputeBuffer m_PointBuffer;
 
         void OnEnable() => Start();
@@ -44,8 +44,6 @@ namespace DefaultNamespace
                     m_Points[i] = circle*(5+noise.snoise(new float2(0,t*10)));
                 }
             }
-
-            m_Material = GetComponent<MeshRenderer>().sharedMaterial;
             
             m_PointBuffer?.Dispose();
             m_PointBuffer = new ComputeBuffer(m_Points.Length,UnsafeUtility.SizeOf<float2>(), ComputeBufferType.Structured);
@@ -66,12 +64,7 @@ namespace DefaultNamespace
             m_PointBuffer?.Dispose();
             m_PointBuffer = new ComputeBuffer(m_Points.Length,UnsafeUtility.SizeOf<float2>());
             m_PointBuffer.SetData(m_Points);
-            m_Material.SetBuffer("points", m_PointBuffer);
-        }
-
-        void Update()
-        {
-            
+            Shader.SetGlobalBuffer("points", m_PointBuffer);
         }
 
         void OnDrawGizmosSelected()

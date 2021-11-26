@@ -34,6 +34,7 @@ namespace DefaultNamespace.GPUBasedLogging
             
             m_Cam.cullingMask = 1 << LayerMask.NameToLayer("Intrusion");
             m_Cam.targetTexture = m_IntrusionObjectRT;
+            m_Cam.stereoTargetEye = StereoTargetEyeMask.None;
             m_Cam.SetReplacementShader(Shader.Find("Hidden/DrawWithBellCurve"),"RenderType");
         }
 
