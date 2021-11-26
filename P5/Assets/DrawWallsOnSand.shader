@@ -39,17 +39,17 @@
             }
 
             #ifdef SHADER_API_D3D11
-            StructuredBuffer<float2> points : register(t1);
+            StructuredBuffer<float2> points;
             #endif
 
             fixed4 frag(v2f input) : SV_Target
             {
                 float val = 0;
 
-                for (int i = 0; i < 128; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     const float2 current_point = points[i];
-                    val += (current_point==0)*saturate(1-25*distance(current_point, input.world_space_pos.xz));
+                    val += all(current_point!=0)*saturate(1-2*distance(current_point, input.world_space_pos.xz));
                 }
                 
                 return saturate(val)*float4(1,1,0,1);
