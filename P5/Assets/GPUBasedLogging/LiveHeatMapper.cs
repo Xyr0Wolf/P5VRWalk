@@ -100,6 +100,7 @@ public class LiveHeatMapper : MonoBehaviour
     
     public void SaveAndReset(string filename)
     {
+        if (!enabled) return;
         // Convert RenderTexture to Texture2D
         var oldRT = RenderTexture.active;
 

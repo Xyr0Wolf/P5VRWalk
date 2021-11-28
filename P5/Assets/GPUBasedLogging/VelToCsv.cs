@@ -28,6 +28,7 @@ namespace DefaultNamespace.GPUBasedLogging
 
         public void CreateOrAppendAndReset(string columnName)
         {
+            if (!enabled) return;
             using var file = new StreamWriter(Application.persistentDataPath + $"/Velocities.tsv", true, Encoding.ASCII);
             var writtenColumn = $"{TickOnStart.s_DateTimeNowTicks}\t{columnName}\t" + string.Join("\t", m_Velocities.AsArray().Select(vel => vel.ToString("0.0000000000")));
             file.WriteLine(writtenColumn);

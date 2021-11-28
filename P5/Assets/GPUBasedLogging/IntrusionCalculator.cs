@@ -62,6 +62,7 @@ namespace DefaultNamespace.GPUBasedLogging
         
         public void SaveAndReset(string columnName)
         {
+            if (!enabled) return;
             using var file = new StreamWriter(Application.persistentDataPath + $"/Intrusion.tsv", true, Encoding.ASCII);
             file.WriteLine($"{TickOnStart.s_DateTimeNowTicks}\t{columnName}\t{m_Value:0.0000000000}");
             

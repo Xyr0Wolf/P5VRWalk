@@ -17,14 +17,14 @@ namespace DefaultNamespace
         CommandBuffer m_WorldPosCommandBuffer;
         
         static readonly int k_WorldPosRTId = Shader.PropertyToID("world_space_rt");
-
+        Camera m_CamMain;
         void OnEnable()
         {
-            var camMain = Camera.main;
-            if (!camMain) return;
-            camMain.depthTextureMode = DepthTextureMode.Depth;
+            m_CamMain = Camera.main;
+            if (!m_CamMain) return;
+            m_CamMain.depthTextureMode = DepthTextureMode.Depth;
             m_ScreenDataVertexBuffer = new ComputeBuffer(4, UnsafeUtility.SizeOf<ScreenDataVertex>());
-            UpdateScreenDataVertexBuffer(camMain);
+            UpdateScreenDataVertexBuffer(m_CamMain);
             Shader.SetGlobalBuffer("screen_data_vertex_buffer", m_ScreenDataVertexBuffer);
 
             // Fill Quad GraphicsBuffer
@@ -36,15 +36,15 @@ namespace DefaultNamespace
             
             // Fill CommandBuffer
             m_WorldPosCommandBuffer = new CommandBuffer {name = "Generate World Position RenderTexture"};
-            m_WorldPosCommandBuffer.GetTemporaryRT(k_WorldPosRTId, camMain.pixelWidth, camMain.pixelHeight,0, FilterMode.Bilinear,GraphicsFormat.R32G32B32A32_SFloat);
+            m_WorldPosCommandBuffer.GetTemporaryRT(k_WorldPosRTId, m_CamMain.pixelWidth, m_CamMain.pixelHeight,0, FilterMode.Bilinear,GraphicsFormat.R32G32B32A32_SFloat);
             m_WorldPosCommandBuffer.SetRenderTarget(k_WorldPosRTId);
             m_WorldPosCommandBuffer.DrawProcedural(m_QuadIndexesGraphicsBuffer, Matrix4x4.identity, new Material(Shader.Find("Hidden/WorldPosRT")), 0, MeshTopology.Triangles, 6);
-            camMain.AddCommandBuffer(CameraEvent.BeforeImageEffectsOpaque, m_WorldPosCommandBuffer);
+            m_CamMain.AddCommandBuffer(CameraEvent.BeforeImageEffectsOpaque, m_WorldPosCommandBuffer);
         }
         
-        void OnDisable()
+        void OnDestroy()
         {
-            Camera.main.RemoveCommandBuffer(CameraEvent.BeforeImageEffectsOpaque, m_WorldPosCommandBuffer);
+            //m_CamMain.RemoveCommandBuffer(CameraEvent.BeforeImageEffectsOpaque, m_WorldPosCommandBuffer);
             m_WorldPosCommandBuffer.Dispose();
             m_QuadIndexesGraphicsBuffer.Dispose();
             m_ScreenDataVertexBuffer.Dispose();
@@ -52,7 +52,7 @@ namespace DefaultNamespace
 
         void Update()
         {
-            UpdateScreenDataVertexBuffer(Camera.main);
+            UpdateScreenDataVertexBuffer(m_CamMain);
         }
 
         void UpdateScreenDataVertexBuffer(Camera cam)

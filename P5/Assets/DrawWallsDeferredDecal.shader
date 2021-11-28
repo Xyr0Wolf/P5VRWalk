@@ -3,6 +3,7 @@
     Properties
     {
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        pic ("Picture", 2D) = "yellow" {}
     }
     SubShader
     {
@@ -15,15 +16,16 @@
 
             sampler2D world_space_rt;
             sampler2D _MainTex;
+            sampler2D pic;
             
             fixed4 frag(v2f input) : SV_Target
             {
                 const float3 pos = tex2D(world_space_rt, input.uv).xyz;
-                const float2 uv = (pos.xz+5)*0.1;
+                const float2 uv = (pos.xz+10)*0.05;
                 clip(1-uv);
                 clip(uv);
                 
-                return tex2D(_MainTex, uv)*saturate(2-pos.y);
+                return tex2D(pic,tex2D(_MainTex, uv).rg)*saturate(2-pos.y);
             }
             ENDCG
         }
