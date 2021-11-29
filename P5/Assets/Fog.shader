@@ -1,13 +1,22 @@
-Shader "Unlit/Line"
+﻿Shader "Unlit/Fog"
 {
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+    }
     SubShader
     {
+        Tags { "RenderType"="Opaque" }
+        LOD 100
+
         Pass
         {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-
+            // make fog work
+            #pragma multi_compile_fog
+            
             #include "UnityCG.cginc"
 
             struct appdata
@@ -19,25 +28,29 @@ Shader "Unlit/Line"
             struct v2f
             {
                 float2 uv : TEXCOORD0;
+                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
-
+            
             fixed4 frag (v2f i) : SV_Target
             {
-                //const float a = i.uv.y-0.5;
-                //const float b = a+(sin(0.1*i.uv.x*UNITY_PI)+sin(UNITY_PI * i.uv.x))*0.1;
-                //const float c = exp(-b*b);
-                //const float4 col = float4(0.8,0.8,0.5,1);
-                //return 0.3*smoothstep(0.995,1,c);
-                return float4(i.uv,1,1);
+                // sample the texture
+                fixed4 col = tex2D(_MainTex, i.uv);
+                // apply fog
+                UNITY_APPLY_FOG(i.fogCoord, col);
+                return col;
             }
             ENDCG
         }

@@ -8,6 +8,7 @@ using Unity.XR.Oculus;
 using Unity.XR.Oculus.Input;
 using Unity.XR.OpenVR;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
 using Random = Unity.Mathematics.Random;
@@ -46,10 +47,12 @@ namespace DefaultNamespace
                 }
             }
 
+            // Set line renderer
             var lineRenderer = GetComponent<LineRenderer>();
             lineRenderer.positionCount = m_Points.Length;
             lineRenderer.SetPositions(m_Points.Select(f => new Vector3(f.x,1,f.y)).ToArray());
 
+            // Create line cam
             var lineCam = new GameObject("Line Cam").AddComponent<Camera>();
             lineCam.transform.position = Vector3.up*10;
             lineCam.transform.rotation = Quaternion.Euler(90,0,0);
@@ -57,12 +60,13 @@ namespace DefaultNamespace
             lineCam.orthographicSize = 10;
             lineCam.aspect = 1;
             lineCam.cullingMask = 1 << LayerMask.NameToLayer("Lines");
-            lineCam.targetTexture = new RenderTexture(1024,1024,0);
+            lineCam.targetTexture = new RenderTexture(1024,1024,0, GraphicsFormat.R32G32_SFloat);
             lineCam.stereoTargetEye = StereoTargetEyeMask.None;
             lineCam.clearFlags = CameraClearFlags.SolidColor;
             lineCam.backgroundColor = Color.clear;
             lineCam.useOcclusionCulling = false;
 
+            // Draw decal
             m_DecalCommandBuffer = new CommandBuffer {name = "Draw Wall Decal"};
             var decalMaterial = new Material(Shader.Find("Hidden/DrawWallsDeferredDecal"));
             decalMaterial.SetTexture("pic", picture);
@@ -102,6 +106,7 @@ namespace DefaultNamespace
         {
             //m_MainCam.RemoveCommandBuffers(CameraEvent.AfterImageEffects);
             m_DecalCommandBuffer?.Dispose();
+            m_Points.Dispose();
         }
     }
 }

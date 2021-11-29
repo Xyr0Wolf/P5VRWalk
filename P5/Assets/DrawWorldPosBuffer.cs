@@ -22,7 +22,7 @@ namespace DefaultNamespace
         {
             m_CamMain = Camera.main;
             if (!m_CamMain) return;
-            m_CamMain.depthTextureMode = DepthTextureMode.Depth;
+            m_CamMain.depthTextureMode = DepthTextureMode.DepthNormals;
             m_ScreenDataVertexBuffer = new ComputeBuffer(4, UnsafeUtility.SizeOf<ScreenDataVertex>());
             UpdateScreenDataVertexBuffer(m_CamMain);
             Shader.SetGlobalBuffer("screen_data_vertex_buffer", m_ScreenDataVertexBuffer);
@@ -36,7 +36,12 @@ namespace DefaultNamespace
             
             // Fill CommandBuffer
             m_WorldPosCommandBuffer = new CommandBuffer {name = "Generate World Position RenderTexture"};
-            m_WorldPosCommandBuffer.GetTemporaryRT(k_WorldPosRTId, m_CamMain.pixelWidth, m_CamMain.pixelHeight,0, FilterMode.Bilinear,GraphicsFormat.R32G32B32A32_SFloat);
+            m_WorldPosCommandBuffer.SetInstanceMultiplier(2);
+            var r = UnityEngine.XR.XRSettings.eyeTextureDesc;
+            r.graphicsFormat = GraphicsFormat.R32G32B32A32_SFloat;
+            r.width = 1024;
+            r.height = 1024;
+            m_WorldPosCommandBuffer.GetTemporaryRT(k_WorldPosRTId, r);
             m_WorldPosCommandBuffer.SetRenderTarget(k_WorldPosRTId);
             m_WorldPosCommandBuffer.DrawProcedural(m_QuadIndexesGraphicsBuffer, Matrix4x4.identity, new Material(Shader.Find("Hidden/WorldPosRT")), 0, MeshTopology.Triangles, 6);
             m_CamMain.AddCommandBuffer(CameraEvent.BeforeImageEffectsOpaque, m_WorldPosCommandBuffer);
@@ -52,6 +57,7 @@ namespace DefaultNamespace
 
         void Update()
         {
+            Shader.SetGlobalMatrix("CameraToWorld", m_CamMain.cameraToWorldMatrix);
             UpdateScreenDataVertexBuffer(m_CamMain);
         }
 

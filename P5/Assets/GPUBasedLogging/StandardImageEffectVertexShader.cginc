@@ -1,5 +1,6 @@
 ﻿#pragma vertex vert
 #pragma fragment frag
+#include <UnityShaderUtilities.cginc>
 
 struct appdata
 {

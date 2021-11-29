@@ -1,11 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using Unity.Mathematics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
-using UnityEngine.Rendering;
 
 namespace DefaultNamespace.GPUBasedLogging
 {

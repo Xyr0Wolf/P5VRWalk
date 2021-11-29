@@ -31,14 +31,15 @@ Shader "Unlit/Wave"
             {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
+                UNITY_VERTEX_INPUT_INSTANCE_ID 
             };
 
             struct v2f
             {
                 float4 clip_space_pos : SV_POSITION;
                 float4 object_space_pos : POSITION1;
-                float4 world_space_pos : POSITION2;
                 float3 normal : NORMAL;
+                UNITY_VERTEX_OUTPUT_STEREO
             };
 
             float4 _ColorA;
@@ -53,9 +54,12 @@ Shader "Unlit/Wave"
             v2f vert (appdata v)
             {
                 v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
                 o.object_space_pos = v.vertex;
-                o.world_space_pos = mul(unity_ObjectToWorld, v.vertex);
-                o.clip_space_pos = mul(unity_MatrixVP, o.world_space_pos);
+                o.clip_space_pos = UnityObjectToClipPos(o.object_space_pos);
                 o.normal = v.normal;
                 return o;
             }
