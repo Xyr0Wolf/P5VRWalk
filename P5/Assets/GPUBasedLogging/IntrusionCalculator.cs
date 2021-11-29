@@ -38,7 +38,7 @@ namespace DefaultNamespace.GPUBasedLogging
         Vector3 m_MovingIntrusionLastPos;
         Vector3 m_LastPos;
         float m_Value;
-        void Update()
+        void FixedUpdate()
         {
             m_Cam.Render();
 

@@ -18,7 +18,7 @@
 
             #include "UnityCG.cginc"
 
-            sampler2D world_space_rt;
+            UNITY_DECLARE_SCREENSPACE_TEXTURE(world_space_rt);
             sampler2D _MainTex;
             sampler2D pic;
 
@@ -40,8 +40,7 @@
                 //const float3 view_normal = DecodeViewNormalStereo(SAMPLE_RAW_DEPTH_TEXTURE(_CameraDepthNormalsTexture, input.uv));
                 //const float3 world_normal = mul(unity_CameraToWorld, view_normal);
                 //clip(world_normal.y-0.9);
-                
-                const float3 pos = tex2D(world_space_rt, input.uv).xyz;
+                const float3 pos = UNITY_SAMPLE_SCREENSPACE_TEXTURE(world_space_rt, input.uv).xyz;
                 const float2 uv = (pos.xz+10)*0.05;
                 clip(1-uv);
                 clip(uv);

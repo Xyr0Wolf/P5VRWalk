@@ -26,6 +26,10 @@ namespace DefaultNamespace.GPUBasedLogging
             m_CamPosLast = camPos;
         }
 
+        private void OnDestroy() {
+            m_Velocities.Dispose();
+        }
+
         public void CreateOrAppendAndReset(string columnName)
         {
             if (!enabled) return;
