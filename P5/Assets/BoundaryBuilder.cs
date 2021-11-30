@@ -70,10 +70,20 @@ namespace DefaultNamespace
             m_DecalCommandBuffer = new CommandBuffer {name = "Draw Wall Decal"};
             var decalMaterial = new Material(Shader.Find("Hidden/DrawWallsDeferredDecal"));
             decalMaterial.SetTexture("pic", picture);
-            m_DecalCommandBuffer.Blit(lineCam.targetTexture,BuiltinRenderTextureType.CameraTarget, decalMaterial);
-            m_MainCam.AddCommandBuffer(CameraEvent.AfterImageEffects, m_DecalCommandBuffer);
+            m_DecalCommandBuffer.Blit(lineCam.targetTexture,BuiltinRenderTextureType.CurrentActive, decalMaterial);
+            ToggleWallRender();
         }
 
+        private bool isWallRenderEnabled = false;
+        
+        void ToggleWallRender() {
+            isWallRenderEnabled = !isWallRenderEnabled;
+            if (isWallRenderEnabled)
+                m_MainCam.AddCommandBuffer(CameraEvent.AfterImageEffectsOpaque, m_DecalCommandBuffer);
+            else
+                m_MainCam.RemoveCommandBuffer(CameraEvent.AfterImageEffectsOpaque, m_DecalCommandBuffer);
+        }
+        
         void FillArrayWithBoundaryPoints(XRInputSubsystem inputSubsystem)
         {
             // Create Points Array
@@ -104,7 +114,6 @@ namespace DefaultNamespace
 
         void OnDestroy()
         {
-            //m_MainCam.RemoveCommandBuffers(CameraEvent.AfterImageEffects);
             m_DecalCommandBuffer?.Dispose();
             m_Points.Dispose();
         }

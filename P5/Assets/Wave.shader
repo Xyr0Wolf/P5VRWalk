@@ -24,6 +24,7 @@ Shader "Unlit/Wave"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma require setrtarrayindexfromanyshader
 
             #include "UnityCG.cginc"
 
