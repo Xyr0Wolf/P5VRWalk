@@ -356,7 +356,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434903643
 GameObject:
@@ -389,64 +389,6 @@ Transform:
   m_Father: {fileID: 1288371439}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &457737863 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1161207984}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &457737864
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457737863}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 431bcc31ff4591842a20d54596159e0f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!4 &457737865 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1161207984}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &457737866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457737863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5318146c77e4f45ab0271af5e9d32eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressToSteerToCenter: {fileID: -7354112695120794136, guid: fec5dd0616dad044caedfc03ccb11cca,
-    type: 3}
-  triggerMaterial: {fileID: 2100000, guid: a4885857e0841eb4d97ef9db6a9b0c18, type: 2}
-  triggerColor: {r: 0.745283, g: 0, b: 0, a: 0}
-  offset:
-    x: 1
-    y: 0.1
-    z: 1
-  accelerationSpeed: 3
-  threshold: 0.02
-  maxVelMagnitudeSQ: 50
-  friction: 0.01
-  timeToStayAtCenter: 5
-  secondsBetweenFlaps: 1.5
-  speedSqBeforeFlaps: 0.3
 --- !u!1001 &612852416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557,102 +499,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 612852416}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &614216217
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 614216221}
-  - component: {fileID: 614216220}
-  - component: {fileID: 614216219}
-  - component: {fileID: 614216218}
-  m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!136 &614216218
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614216217}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!23 &614216219
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614216217}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 3825f92b172bcae48902415f43a60738, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &614216220
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614216217}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &614216221
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614216217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &659078246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,180 +1277,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.5}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1161207984
+--- !u!1001 &1026612094
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -9188833680254608449, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637416, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
-      propertyPath: m_Layer
-      value: 7
+      propertyPath: m_Name
+      value: Interesting Objects
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5265649821843637419, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7860150023252723446, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -6169482600158657544, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -5949937003418820476, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -5636708409763629846, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5663806359137196371, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.468
+      value: -0.144
       objectReference: {fileID: 0}
-    - target: {fileID: -5351026133441418630, guid: 4c42844b29f47834bad5b6b8513cc3dd,
+    - target: {fileID: 5663806359904902115, guid: 36d5c75f7c85d874c90228dfb669f273,
         type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -3703677876623096496, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -3252403636951860124, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -3212971170607856046, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -3043844131749027288, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: -2544315364689349949, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Name
-      value: Eagle
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1255246019889308004, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1946886134046971382, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2959689657002732389, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3751564226933124255, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5582461173824539478, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5648368002860644879, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426800307974307573, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546394250730293774, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8197684252083131646, guid: 4c42844b29f47834bad5b6b8513cc3dd,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
+      propertyPath: m_LocalPosition.y
+      value: -0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4c42844b29f47834bad5b6b8513cc3dd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 36d5c75f7c85d874c90228dfb669f273, type: 3}
 --- !u!1 &1288371437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeadsetVelocity: 0.5
-  movingIntrusion: {fileID: 457737865}
+  movingIntrusion: {fileID: 0}
 --- !u!114 &1288371446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,95 +1543,138 @@ MonoBehaviour:
   sceneClipInfoCollections:
   - name: Oculus Disabled Boundary
     sceneClipInfos:
+    - name: Wait for our input
+      prefab: {fileID: 0}
+      loggingStates: 2
+      type: 7
+      explanation: Shout at us to change the boundary D
+      specialCase: 0
     - name: State to user no boundary
       prefab: {fileID: 0}
       loggingStates: 2
       type: 0
       explanation: This scenario has no visible play boundaries
+      specialCase: 0
     - name: Walk to nearby point
-      prefab: {fileID: 0}
+      prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
+        type: 3}
       loggingStates: 2
       type: 2
-      explanation: Walk to the point
+      explanation: Walk to the green higlighted point
+      specialCase: 0
     - name: Walk around for 60 seconds
       prefab: {fileID: 0}
       loggingStates: 0
       type: 5
       explanation: 
+      specialCase: 0
     - name: Log and Wait 2seconds
       prefab: {fileID: 0}
-      loggingStates: 0
+      loggingStates: 1
       type: 6
-      explanation: 
+      explanation: Please wait
+      specialCase: 0
+    - name: Wait for our input
+      prefab: {fileID: 0}
+      loggingStates: 2
+      type: 7
+      explanation: Shout at us to change the boundary
+      specialCase: 0
   - name: Oculus Perma Boundary
     sceneClipInfos:
+    - name: Wait for our input
+      prefab: {fileID: 0}
+      loggingStates: 2
+      type: 7
+      explanation: Shout at us to change the boundary P
+      specialCase: 0
     - name: State to the user perma oculus boundary
       prefab: {fileID: 0}
-      loggingStates: 0
+      loggingStates: 2
       type: 0
-      explanation: 
+      explanation: This scenario has a very visible play boundary
+      specialCase: 0
     - name: Walk to point
-      prefab: {fileID: 0}
-      loggingStates: 0
-      type: 0
-      explanation: 
+      prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
+        type: 3}
+      loggingStates: 2
+      type: 2
+      explanation: Walk to the green higlighted point
+      specialCase: 0
     - name: Walk to point near boundary
-      prefab: {fileID: 0}
-      loggingStates: 0
-      type: 0
-      explanation: 
+      prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
+        type: 3}
+      loggingStates: 2
+      type: 1
+      explanation: Walk to the green higlighted point
+      specialCase: 0
     - name: Walk around for 60 seconds
       prefab: {fileID: 0}
       loggingStates: 0
-      type: 0
+      type: 5
       explanation: 
+      specialCase: 0
     - name: Log and Wait 2seconds
       prefab: {fileID: 0}
-      loggingStates: 0
-      type: 0
-      explanation: 
+      loggingStates: 1
+      type: 6
+      explanation: Please wait
+      specialCase: 0
+    - name: Wait for our input
+      prefab: {fileID: 0}
+      loggingStates: 2
+      type: 7
+      explanation: Shout at us to change the boundary
+      specialCase: 0
   - name: Bird
     sceneClipInfos:
     - name: Make bird fly to center
-      prefab: {fileID: 0}
-      loggingStates: 0
-      type: 0
-      explanation: 
-    - name: Make bird go to wall
-      prefab: {fileID: 0}
-      loggingStates: 0
-      type: 0
-      explanation: 
+      prefab: {fileID: 14945437428736933, guid: f18f8cc2a7d62074c8df29fbb58387bf,
+        type: 3}
+      loggingStates: 2
+      type: 4
+      explanation: Press the highlighted trigger, to steer the eagle into center
+      specialCase: 0
     - name: Walk around for 60 seconds
-      prefab: {fileID: 0}
-      loggingStates: 0
-      type: 0
-      explanation: 
-    - name: Log and Wait 2seconds
-      prefab: {fileID: 0}
-      loggingStates: 0
-      type: 0
-      explanation: 
-  - name: Object in Middle
-    sceneClipInfos:
-    - name: Make user go to center and explain why
-      prefab: {fileID: 0}
-      loggingStates: 0
-      type: 3
-      explanation: Here we placed an object at the center. Walk to it now.
-    - name: Walk around for 60 seconds
-      prefab: {fileID: 0}
+      prefab: {fileID: 14945437428736933, guid: f18f8cc2a7d62074c8df29fbb58387bf,
+        type: 3}
       loggingStates: 0
       type: 5
       explanation: 
+      specialCase: 0
     - name: Log and Wait 2seconds
       prefab: {fileID: 0}
+      loggingStates: 1
+      type: 6
+      explanation: Please wait
+      specialCase: 0
+  - name: Object in Middle
+    sceneClipInfos:
+    - name: Make user go to center and explain why
+      prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
+        type: 3}
       loggingStates: 0
+      type: 3
+      explanation: Here we placed an object at the center. Walk to it now.
+      specialCase: 1
+    - name: Walk around for 60 seconds
+      prefab: {fileID: 6667046380385630194, guid: c71fbd284dfa418489383ed97e65e24c,
+        type: 3}
+      loggingStates: 0
+      type: 5
+      explanation: 
+      specialCase: 0
+    - name: Log and Wait 2seconds
+      prefab: {fileID: 0}
+      loggingStates: 1
       type: 6
       explanation: 
+      specialCase: 0
   textScreen: {fileID: 38791478}
   textSpeed: 5
   textDistance: 1.75
+  specialCaseObjPrefab: {fileID: 6667046380385630194, guid: c71fbd284dfa418489383ed97e65e24c,
+    type: 3}
 --- !u!114 &1288371448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,7 +1956,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1445060767
 GameObject:

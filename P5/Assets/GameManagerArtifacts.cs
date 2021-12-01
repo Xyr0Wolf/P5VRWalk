@@ -32,12 +32,15 @@ public class GameManagerArtifacts : MonoBehaviour {
     public void SwitchSceneClip() { // The one to call
         if (currentSceneClip)
             Destroy(currentSceneClip);
+        if (specialCaseObj)
+            Destroy(specialCaseObj);
+        
         sceneClipInfoActiveIndex++;
-        if(sceneClipInfoActiveIndex > sceneClipInfoCollections[sceneClipCollectionActiveIndex].sceneClipInfos.Length) {
+        if(sceneClipInfoActiveIndex >= sceneClipInfoCollections[sceneClipCollectionActiveIndex].sceneClipInfos.Length) {
             SwitchSceneClipCollection();
             sceneClipInfoActiveIndex = 0;
         }
-        
+
         var activeSceneCollection = sceneClipInfoCollections[sceneClipCollectionActiveIndex];
         var activeSceneClipInfo = activeSceneCollection.sceneClipInfos[sceneClipInfoActiveIndex];
         
@@ -59,22 +62,36 @@ public class GameManagerArtifacts : MonoBehaviour {
                 m_IntrusionCalculator.SaveAndReset(activeSceneCollection.name);
                 break;
         }
+        
+        textScreen.text = activeSceneClipInfo.explanation;
 
         switch (activeSceneClipInfo.type) {
-            case SceneClipInfoType.Explain: 
+            case SceneClipInfoType.Explain:
+                IEnumerator Explain() {
+                    yield return new WaitForSeconds(10);
+                    SwitchSceneClip();
+                }
+
+                StartCoroutine(Explain());
                 break;
-            case SceneClipInfoType.GoToBoundary: 
+            case SceneClipInfoType.GoToBoundary:
+                currentSceneClip.GetComponent<GoToTrigger>().Setup(this, GoToTypes.Boundary);
                 break;
-            case SceneClipInfoType.GoToNear: 
+            case SceneClipInfoType.GoToNear:
+                currentSceneClip.GetComponent<GoToTrigger>().Setup(this, GoToTypes.Near);
                 break;
-            case SceneClipInfoType.GoToCenter: 
+            case SceneClipInfoType.GoToCenter:
+                currentSceneClip.GetComponent<GoToTrigger>().Setup(this, GoToTypes.Center);
+                if (activeSceneClipInfo.specialCase)
+                    specialCaseObj = Instantiate(specialCaseObjPrefab);
                 break;
-            case SceneClipInfoType.PrefabControlled: 
+            case SceneClipInfoType.PrefabControlled:
+                currentSceneClip.GetComponent<ISetup>().Setup(this);
                 break;
             case SceneClipInfoType.WalkSim:
                 IEnumerator WalkSim() {
                     textScreen.text = "";
-                    yield return new WaitForSeconds(2);
+                    yield return new WaitForSeconds(60);
                     textScreen.text = "5";
                     yield return new WaitForSeconds(1);
                     textScreen.text = "3";
@@ -105,46 +122,38 @@ public class GameManagerArtifacts : MonoBehaviour {
     void SwitchSceneClipCollection() {
         sceneClipCollectionActiveIndex++;
         Debug.Log($"Now active: {sceneClipInfoCollections[sceneClipCollectionActiveIndex].name}");
+
+        if (sceneClipCollectionActiveIndex >= sceneClipInfoCollections.Length) {
+            Application.Quit();
+            textScreen.text = "Thx for testing, you can take off the headset now";
+        }
     }
 
     private void Update() {
         var camTransform = _camera.transform;
         m_CanvasTransform.position = Vector3.Lerp(m_CanvasTransform.position, camTransform.position+camTransform.forward*textDistance, Time.deltaTime*textSpeed);
         m_CanvasTransform.rotation = Quaternion.Slerp(m_CanvasTransform.rotation, camTransform.rotation, Time.deltaTime*textSpeed);
-
-        if (DontContinue) 
-            return;
-        
-        var activeSceneCollection = sceneClipInfoCollections[sceneClipCollectionActiveIndex];
-        var activeSceneClipInfo = activeSceneCollection.sceneClipInfos[sceneClipInfoActiveIndex];
-
-        switch (activeSceneClipInfo.type) {
-            case SceneClipInfoType.Explain: 
-                break;
-            case SceneClipInfoType.GoToBoundary: 
-                break;
-            case SceneClipInfoType.GoToNear: 
-                break;
-            case SceneClipInfoType.GoToCenter: 
-                break;
-        }
     }
-
-    private bool DontContinue = true;
-
     private void Start() {
         sceneClipInfoCollections = sceneClipInfoCollections.OrderBy(a => Random.value).ToArray();
+        Debug.Log($"Now active: {sceneClipInfoCollections[sceneClipCollectionActiveIndex].name}");
+
         m_CanvasTransform = textScreen.transform.parent;
         _camera = Camera.main;
         textScreen.text = "Say when you are ready :)";
         pressToContinue.action.performed += context => {
-            DontContinue = false;
+            Debug.Log("You pressed continue");
+            SwitchSceneClip();
         };
 
         m_LiveHeatMapper = GetComponent<LiveHeatMapper>();
         m_VelToCsv = GetComponent<VelToCsv>();
         m_IntrusionCalculator = GetComponent<IntrusionCalculator>();
     }
+
+    [Header("Misc")] 
+    [SerializeField] private GameObject specialCaseObjPrefab;
+    private GameObject specialCaseObj;
 }
 
 [Serializable]
@@ -160,6 +169,7 @@ struct SceneClipInfo {
     public LoggingStates loggingStates;
     public SceneClipInfoType type;
     public string explanation;
+    public bool specialCase;
 }
 
 enum SceneClipInfoType {
@@ -169,7 +179,8 @@ enum SceneClipInfoType {
     GoToCenter,
     PrefabControlled,
     WalkSim,
-    LogAndWait
+    LogAndWait,
+    WaitForGoAhead
 }
 
 enum LoggingStates {

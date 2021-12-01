@@ -23,7 +23,7 @@ public class BoundaryBuilder : MonoBehaviour
         var inputSubsystem = list.FirstOrDefault(s => s.running);
         if (inputSubsystem != null)
         {
-            inputSubsystem.boundaryChanged += FillArrayWithBoundaryPoints;
+            // inputSubsystem.boundaryChanged += FillArrayWithBoundaryPoints; -- This should only update at start of unity
             FillArrayWithBoundaryPoints(inputSubsystem);
         }
 

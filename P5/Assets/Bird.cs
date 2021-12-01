@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public interface ISetup {
+    public void Setup(GameManagerArtifacts gameManagerArtifacts);
+}
+
 namespace DefaultNamespace {
     [RequireComponent(typeof(Animator))]
-    public class Bird : MonoBehaviour {
+    public class Bird : MonoBehaviour, ISetup {
         [Header("Input")]
         [SerializeField] private InputActionReference pressToSteerToCenter;
         [SerializeField] Material triggerMaterial;
@@ -30,6 +33,7 @@ namespace DefaultNamespace {
         private float3 vel;
         private Camera m_Cam;
         private Animator anim;
+        private GameManagerArtifacts _gameManagerArtifacts;
 
         private void Start() {
             m_Cam = Camera.main;
@@ -37,8 +41,22 @@ namespace DefaultNamespace {
             anim = GetComponent<Animator>();
             StartCoroutine(FlapWings());
 
-            pressToSteerToCenter.action.performed += context => timeToStayAtCenterLeft = timeToStayAtCenter;
+            pressToSteerToCenter.action.performed += context => {
+                if (_gameManagerArtifacts && !pressedAlready) {
+                    pressedAlready = true;
+                    StartCoroutine(WaitForBirdInCenter());
+                }
+
+                timeToStayAtCenterLeft = timeToStayAtCenter;
+            };
         }
+        
+        IEnumerator WaitForBirdInCenter() {
+            yield return new WaitForSeconds(3);
+            _gameManagerArtifacts.SwitchSceneClip();
+        }
+
+        private bool pressedAlready = false;
 
         IEnumerator FlapWings() {
             while (enabled) {
@@ -47,7 +65,6 @@ namespace DefaultNamespace {
                     anim.SetTrigger("Fly");
             }
         }
-
 
         private void Update() {
             float3 dstPoint = m_Cam.transform.TransformPoint(offset);
@@ -71,6 +88,10 @@ namespace DefaultNamespace {
 
         private void OnDestroy() {
             triggerMaterial.SetColor ("_EmissionColor", Color.black);
+        }
+
+        public void Setup(GameManagerArtifacts gameManagerArtifacts) {
+            _gameManagerArtifacts = gameManagerArtifacts;
         }
     }
 }
