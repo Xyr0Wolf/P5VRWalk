@@ -420,6 +420,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1161207984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &457737866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457737863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5318146c77e4f45ab0271af5e9d32eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressToSteerToCenter: {fileID: -7354112695120794136, guid: fec5dd0616dad044caedfc03ccb11cca,
+    type: 3}
+  triggerMaterial: {fileID: 2100000, guid: a4885857e0841eb4d97ef9db6a9b0c18, type: 2}
+  triggerColor: {r: 0.745283, g: 0, b: 0, a: 0}
+  offset:
+    x: 1
+    y: 0.1
+    z: 1
+  accelerationSpeed: 3
+  threshold: 0.02
+  maxVelMagnitudeSQ: 50
+  friction: 0.01
+  timeToStayAtCenter: 5
+  secondsBetweenFlaps: 1.5
+  speedSqBeforeFlaps: 0.3
 --- !u!1001 &612852416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1596,6 +1623,7 @@ GameObject:
   - component: {fileID: 1288371446}
   - component: {fileID: 1288371443}
   - component: {fileID: 1288371447}
+  - component: {fileID: 1288371448}
   m_Layer: 0
   m_Name: XRRig
   m_TagString: Untagged
@@ -1761,7 +1789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressToContinue: {fileID: -8558238356061533002, guid: fec5dd0616dad044caedfc03ccb11cca,
     type: 3}
-  ArtifactInfos:
+  sceneClipInfoCollections:
   - name: Oculus Disabled Boundary
     sceneClipInfos:
     - name: State to user no boundary
@@ -1853,6 +1881,20 @@ MonoBehaviour:
   textScreen: {fileID: 38791478}
   textSpeed: 5
   textDistance: 1.75
+--- !u!114 &1288371448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288371437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737394f490ee404e809e350d261bd55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionAsset: {fileID: -944628639613478452, guid: fec5dd0616dad044caedfc03ccb11cca,
+    type: 3}
 --- !u!43 &1291384111
 Mesh:
   m_ObjectHideFlags: 0

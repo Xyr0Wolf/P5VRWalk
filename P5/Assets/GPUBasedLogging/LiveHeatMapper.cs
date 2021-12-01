@@ -79,7 +79,7 @@ public class LiveHeatMapper : MonoBehaviour
         if (showDebugView) m_Cam.AddCommandBuffer(CameraEvent.AfterEverything, commandBuffer);
     }
     
-    public void Reset() {
+    public void ResetLogging() {
         var oldRT = RenderTexture.active;
         
         RenderTexture.active = m_AggregateMap;

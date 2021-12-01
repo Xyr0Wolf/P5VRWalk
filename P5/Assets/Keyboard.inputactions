@@ -12,6 +12,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Trigger",
+                    "type": "Button",
+                    "id": "15b7e5d4-05e0-4c33-9b91-9f7a9400f3a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -34,6 +42,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ea9c0f9-bd78-48bd-8691-29ffb758e709",
+                    "path": "<XRController>/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

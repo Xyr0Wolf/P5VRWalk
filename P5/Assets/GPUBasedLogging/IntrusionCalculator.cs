@@ -65,7 +65,7 @@ namespace DefaultNamespace.GPUBasedLogging
             m_Value = 0f;
         }
 
-        public void Reset() => m_Value = 0f;
+        public void ResetLogging() => m_Value = 0f;
 
         public static float GetCoverPercentage(RenderTexture renderTexture)
         {
