@@ -16,8 +16,9 @@ public class GameManagerArtifacts : MonoBehaviour {
     [Header("Text Screen Settings")]
     [SerializeField] Text textScreen;
     [SerializeField] float textSpeed;
-    [SerializeField] float textDistanceFar;
-    [SerializeField] float textDistanceNear;
+    [SerializeField] float textDistance;
+    private Transform m_CanvasTransform;
+    private Camera _camera;
 
     public void SwitchSceneClip() { // The one to call
         Destroy(currentSceneClip);
@@ -30,12 +31,15 @@ public class GameManagerArtifacts : MonoBehaviour {
     }
 
     private void Update() {
-        
+        var camTransform = _camera.transform;
+        m_CanvasTransform.position = Vector3.Lerp(m_CanvasTransform.position, camTransform.position+camTransform.forward*textDistance, Time.deltaTime*textSpeed);
+        m_CanvasTransform.rotation = Quaternion.Slerp(m_CanvasTransform.rotation, camTransform.rotation, Time.deltaTime*textSpeed);
     }
 
     private void Start() {
         ArtifactInfos = ArtifactInfos.OrderBy(a => Random.value).ToArray();
-        
+        m_CanvasTransform = textScreen.transform.parent;
+        _camera = Camera.main;
     }
 }
 
@@ -49,22 +53,23 @@ struct SceneClipInfoCollection {
 struct SceneClipInfo {
     public string name;
     public GameObject prefab;
-    public SceneClipInfoEncoding sceneClipInfoEncoding;
+    public LoggingStates loggingStates;
+    public SceneClipInfoType type;
+    public string explanation;
 }
 
-enum SceneClipInfoEncoding {
-    CompleteTimer_StartRecording,
-    CompleteTimer_StartEndRecording,
-    CompleteTimer_EndRecording,
-    CompleteTimer_NoRecording,
-    
-    CompleteCallManual_StartRecording,
-    CompleteCallManual_StartEndRecording,
-    CompleteCallManual_EndRecording,
-    CompleteCallManual_NoRecording,
-    
-    CompleteCallInput_StartRecording,
-    CompleteCallInput_StartEndRecording,
-    CompleteCallInput_EndRecording,
-    CompleteCallInput_NoRecording
+enum SceneClipInfoType {
+    Explain,
+    GoToBoundary,
+    GoToNear,
+    GoToCenter,
+    PrefabControlled,
+    WalkSim,
+    LogAndWait
+}
+
+enum LoggingStates {
+    StartRecording,
+    EndRecording,
+    NoRecording,
 }
