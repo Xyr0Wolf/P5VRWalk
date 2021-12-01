@@ -30,6 +30,8 @@ namespace DefaultNamespace.GPUBasedLogging
             m_Velocities.Dispose();
         }
 
+        public void Reset() => m_Velocities.Clear();
+
         public void CreateOrAppendAndReset(string columnName)
         {
             if (!enabled) return;

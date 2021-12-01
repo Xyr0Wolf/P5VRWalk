@@ -78,6 +78,16 @@ public class LiveHeatMapper : MonoBehaviour
         commandBuffer.Blit(null,BuiltinRenderTextureType.CameraTarget, drawDebugHeatmapOnScreenMaterial);
         if (showDebugView) m_Cam.AddCommandBuffer(CameraEvent.AfterEverything, commandBuffer);
     }
+    
+    public void Reset() {
+        var oldRT = RenderTexture.active;
+        
+        RenderTexture.active = m_AggregateMap;
+        GL.Clear(false, true, Color.clear);
+        m_TimeSinceCaptureBegan = Time.time;
+
+        RenderTexture.active = oldRT;
+    }
 
     void Update()
     {

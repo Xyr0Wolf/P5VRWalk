@@ -65,6 +65,8 @@ namespace DefaultNamespace.GPUBasedLogging
             m_Value = 0f;
         }
 
+        public void Reset() => m_Value = 0f;
+
         public static float GetCoverPercentage(RenderTexture renderTexture)
         {
             // Copy smallest mip to new 1x1 RenderTexture

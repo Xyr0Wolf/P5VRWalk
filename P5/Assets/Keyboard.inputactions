@@ -1,0 +1,56 @@
+{
+    "name": "Keyboard",
+    "maps": [
+        {
+            "name": "Tester",
+            "id": "9332a388-0c95-4b59-b584-7766f609e722",
+            "actions": [
+                {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "698cd13b-1e86-48d7-b482-59bfec595054",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7202f8de-dc65-40c6-8263-4f15b09a0417",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a2fc281-e250-4949-adf9-73c0f11986fe",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

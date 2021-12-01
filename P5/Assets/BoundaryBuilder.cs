@@ -34,7 +34,14 @@ namespace DefaultNamespace
                 inputSubsystem.boundaryChanged += FillArrayWithBoundaryPoints;
                 FillArrayWithBoundaryPoints(inputSubsystem);
             }
-            
+
+            // Tested OVR boundary
+            // if (OVRManager.isHmdPresent && OVRManager.boundary != null) {
+            //     var points = OVRManager.boundary.GetGeometry(OVRBoundary.BoundaryType.PlayArea);
+            //     if (m_Points.IsCreated) m_Points.Dispose();
+            //     m_Points = new NativeArray<float2>(points.Select(point => new float2(point.x, point.z)).ToArray(), Allocator.Persistent);
+            // }
+
             if (m_Points.Length == 0)
             {
                 m_Points = new NativeArray<float2>(100, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
@@ -71,6 +78,7 @@ namespace DefaultNamespace
             var decalMaterial = new Material(Shader.Find("Hidden/DrawWallsDeferredDecal"));
             decalMaterial.SetTexture("pic", picture);
             m_DecalCommandBuffer.Blit(lineCam.targetTexture,BuiltinRenderTextureType.CurrentActive, decalMaterial);
+            ToggleWallRender();
             ToggleWallRender();
         }
 
