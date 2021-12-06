@@ -20,15 +20,23 @@ public class GoToTrigger : MonoBehaviour {
                 transform.position = new Vector3(camPos.x + rUnitSphere.x, 0.51f,camPos.z+rUnitSphere.z);
                 break;
             case GoToTypes.Boundary: 
+                var boundaryBuilder = FindObjectOfType<BoundaryBuilder>();
+                var randomPoint = boundaryBuilder.m_Points[Random.Range(0, boundaryBuilder.m_Points.Length)];
+                var pointTowardCenter = randomPoint+math.normalize(-randomPoint)*distanceAwayFromCam;
+                transform.position = new float3(pointTowardCenter.x, 0.51f, pointTowardCenter.y);
                 break;
             case GoToTypes.Center:
                 transform.position = centerLocation;
                 break;
         }
     }
+
+    private bool hitAlready = false;
     private void OnTriggerEnter(Collider other) {
-        if(_gameManagerArtifacts)
+        if(_gameManagerArtifacts && !hitAlready) {
+            hitAlready = true;
             _gameManagerArtifacts.SwitchSceneClip();
+        }
     }
 }
 

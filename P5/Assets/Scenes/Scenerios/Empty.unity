@@ -188,7 +188,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 266
-    m_Alignment: 6
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   picture: {fileID: 2800000, guid: deec331901ef9fe4fbbf6283f03d0695, type: 3}
+  load: {fileID: -3296079746089375811, guid: fec5dd0616dad044caedfc03ccb11cca, type: 3}
 --- !u!120 &101426198
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -819,7 +820,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25468
+  m_Name: pb_Mesh19584
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1543,89 +1544,71 @@ MonoBehaviour:
   sceneClipInfoCollections:
   - name: Oculus Disabled Boundary
     sceneClipInfos:
-    - name: Wait for our input
-      prefab: {fileID: 0}
-      loggingStates: 2
-      type: 7
-      explanation: Shout at us to change the boundary D
-      specialCase: 0
     - name: State to user no boundary
       prefab: {fileID: 0}
       loggingStates: 2
       type: 0
       explanation: This scenario has no visible play boundaries
-      specialCase: 0
+      specialCase: {fileID: 0}
     - name: Walk to nearby point
       prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
         type: 3}
       loggingStates: 2
       type: 2
       explanation: Walk to the green higlighted point
-      specialCase: 0
+      specialCase: {fileID: 0}
     - name: Walk around for 60 seconds
       prefab: {fileID: 0}
       loggingStates: 0
       type: 5
       explanation: 
-      specialCase: 0
+      specialCase: {fileID: 0}
     - name: Log and Wait 2seconds
       prefab: {fileID: 0}
       loggingStates: 1
       type: 6
       explanation: Please wait
-      specialCase: 0
-    - name: Wait for our input
-      prefab: {fileID: 0}
-      loggingStates: 2
-      type: 7
-      explanation: Shout at us to change the boundary
-      specialCase: 0
+      specialCase: {fileID: 0}
   - name: Oculus Perma Boundary
     sceneClipInfos:
-    - name: Wait for our input
-      prefab: {fileID: 0}
-      loggingStates: 2
-      type: 7
-      explanation: Shout at us to change the boundary P
-      specialCase: 0
     - name: State to the user perma oculus boundary
       prefab: {fileID: 0}
       loggingStates: 2
       type: 0
       explanation: This scenario has a very visible play boundary
-      specialCase: 0
+      specialCase: {fileID: 3203592802398771378, guid: 7e48065aee60e9748876c268b8b2ee61,
+        type: 3}
     - name: Walk to point
       prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
         type: 3}
       loggingStates: 2
       type: 2
       explanation: Walk to the green higlighted point
-      specialCase: 0
+      specialCase: {fileID: 3203592802398771378, guid: 7e48065aee60e9748876c268b8b2ee61,
+        type: 3}
     - name: Walk to point near boundary
       prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
         type: 3}
       loggingStates: 2
       type: 1
       explanation: Walk to the green higlighted point
-      specialCase: 0
+      specialCase: {fileID: 3203592802398771378, guid: 7e48065aee60e9748876c268b8b2ee61,
+        type: 3}
     - name: Walk around for 60 seconds
-      prefab: {fileID: 0}
+      prefab: {fileID: 3203592802398771378, guid: 7e48065aee60e9748876c268b8b2ee61,
+        type: 3}
       loggingStates: 0
       type: 5
       explanation: 
-      specialCase: 0
+      specialCase: {fileID: 3203592802398771378, guid: 7e48065aee60e9748876c268b8b2ee61,
+        type: 3}
     - name: Log and Wait 2seconds
       prefab: {fileID: 0}
       loggingStates: 1
       type: 6
       explanation: Please wait
-      specialCase: 0
-    - name: Wait for our input
-      prefab: {fileID: 0}
-      loggingStates: 2
-      type: 7
-      explanation: Shout at us to change the boundary
-      specialCase: 0
+      specialCase: {fileID: 3203592802398771378, guid: 7e48065aee60e9748876c268b8b2ee61,
+        type: 3}
   - name: Bird
     sceneClipInfos:
     - name: Make bird fly to center
@@ -1634,47 +1617,53 @@ MonoBehaviour:
       loggingStates: 2
       type: 4
       explanation: Press the highlighted trigger, to steer the eagle into center
-      specialCase: 0
+      specialCase: {fileID: 0}
     - name: Walk around for 60 seconds
       prefab: {fileID: 14945437428736933, guid: f18f8cc2a7d62074c8df29fbb58387bf,
         type: 3}
       loggingStates: 0
       type: 5
       explanation: 
-      specialCase: 0
+      specialCase: {fileID: 0}
     - name: Log and Wait 2seconds
       prefab: {fileID: 0}
       loggingStates: 1
       type: 6
       explanation: Please wait
-      specialCase: 0
+      specialCase: {fileID: 0}
   - name: Object in Middle
     sceneClipInfos:
+    - name: Walk to point near boundary
+      prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
+        type: 3}
+      loggingStates: 2
+      type: 1
+      explanation: Walk to the green higlighted point
+      specialCase: {fileID: 0}
     - name: Make user go to center and explain why
       prefab: {fileID: 8736651522680617181, guid: 73c02ccefbf9be445a265e06c07e0fed,
         type: 3}
       loggingStates: 0
       type: 3
       explanation: Here we placed an object at the center. Walk to it now.
-      specialCase: 1
+      specialCase: {fileID: 6667046380385630194, guid: c71fbd284dfa418489383ed97e65e24c,
+        type: 3}
     - name: Walk around for 60 seconds
       prefab: {fileID: 6667046380385630194, guid: c71fbd284dfa418489383ed97e65e24c,
         type: 3}
       loggingStates: 0
       type: 5
       explanation: 
-      specialCase: 0
+      specialCase: {fileID: 0}
     - name: Log and Wait 2seconds
       prefab: {fileID: 0}
       loggingStates: 1
       type: 6
       explanation: 
-      specialCase: 0
+      specialCase: {fileID: 0}
   textScreen: {fileID: 38791478}
   textSpeed: 5
   textDistance: 1.75
-  specialCaseObjPrefab: {fileID: 6667046380385630194, guid: c71fbd284dfa418489383ed97e65e24c,
-    type: 3}
 --- !u!114 &1288371448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1695,7 +1684,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25308
+  m_Name: pb_Mesh19476
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

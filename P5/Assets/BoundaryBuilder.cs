@@ -4,6 +4,7 @@ using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
 
@@ -12,6 +13,7 @@ public class BoundaryBuilder : MonoBehaviour
     public NativeArray<float2> m_Points;
     CommandBuffer m_DecalCommandBuffer;
     [SerializeField] Texture2D picture;
+    [SerializeField] private InputActionReference load;
 
     Camera m_MainCam;
     void Start()
@@ -25,6 +27,7 @@ public class BoundaryBuilder : MonoBehaviour
         {
             // inputSubsystem.boundaryChanged += FillArrayWithBoundaryPoints; -- This should only update at start of unity
             FillArrayWithBoundaryPoints(inputSubsystem);
+            load.action.performed += context => FillArrayWithBoundaryPoints(inputSubsystem);
         }
 
         // Tested OVR boundary

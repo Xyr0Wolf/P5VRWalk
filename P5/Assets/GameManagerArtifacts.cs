@@ -13,7 +13,7 @@ public class GameManagerArtifacts : MonoBehaviour {
     [SerializeField] InputActionReference pressToContinue;
     [FormerlySerializedAs("ArtifactInfos")] 
     [SerializeField] SceneClipInfoCollection[] sceneClipInfoCollections;
-    private int sceneClipInfoActiveIndex = 0;
+    private int sceneClipInfoActiveIndex = -1;
     private int sceneClipCollectionActiveIndex = 0;
     private GameObject currentSceneClip;
     
@@ -49,6 +49,9 @@ public class GameManagerArtifacts : MonoBehaviour {
         // Do initial setup
         if (activeSceneClipInfo.prefab)
             currentSceneClip = Instantiate(activeSceneClipInfo.prefab);
+        
+        if (activeSceneClipInfo.specialCase)
+            specialCaseObj = Instantiate(activeSceneClipInfo.specialCase);
 
         switch (activeSceneClipInfo.loggingStates) {
             case LoggingStates.StartRecording: 
@@ -82,17 +85,19 @@ public class GameManagerArtifacts : MonoBehaviour {
                 break;
             case SceneClipInfoType.GoToCenter:
                 currentSceneClip.GetComponent<GoToTrigger>().Setup(this, GoToTypes.Center);
-                if (activeSceneClipInfo.specialCase)
-                    specialCaseObj = Instantiate(specialCaseObjPrefab);
                 break;
             case SceneClipInfoType.PrefabControlled:
                 currentSceneClip.GetComponent<ISetup>().Setup(this);
                 break;
             case SceneClipInfoType.WalkSim:
                 IEnumerator WalkSim() {
+                    textScreen.text = "You are now encouraged to walk around";
+                    yield return new WaitForSeconds(5);
                     textScreen.text = "";
-                    yield return new WaitForSeconds(60);
+                    yield return new WaitForSeconds(50);
                     textScreen.text = "5";
+                    yield return new WaitForSeconds(1);
+                    textScreen.text = "4";
                     yield return new WaitForSeconds(1);
                     textScreen.text = "3";
                     yield return new WaitForSeconds(1);
@@ -150,9 +155,7 @@ public class GameManagerArtifacts : MonoBehaviour {
         m_VelToCsv = GetComponent<VelToCsv>();
         m_IntrusionCalculator = GetComponent<IntrusionCalculator>();
     }
-
-    [Header("Misc")] 
-    [SerializeField] private GameObject specialCaseObjPrefab;
+    
     private GameObject specialCaseObj;
 }
 
@@ -169,7 +172,7 @@ struct SceneClipInfo {
     public LoggingStates loggingStates;
     public SceneClipInfoType type;
     public string explanation;
-    public bool specialCase;
+    public GameObject specialCase;
 }
 
 enum SceneClipInfoType {
